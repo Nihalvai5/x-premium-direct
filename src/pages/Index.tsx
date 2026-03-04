@@ -1,7 +1,8 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { BarChart3, Check, CheckCircle, Crown, DollarSign, ExternalLink, MessageCircle, MessageSquare, Pen, Send, Shield, Sparkles, Star, Users, Zap } from "lucide-react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { BarChart3, Check, CheckCircle, Crown, DollarSign, ExternalLink, HelpCircle, MessageCircle, MessageSquare, Pen, Send, Shield, Sparkles, Star, Users, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 
 const TELEGRAM_LINK = "https://t.me/Nihalvai332";
@@ -302,6 +303,75 @@ const Index = () => {
             </div>
           </div>
         </motion.div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 px-4">
+        <div className="max-w-3xl mx-auto">
+          <motion.h2
+            initial="hidden" whileInView="visible" viewport={{ once: true }}
+            variants={fadeUp}
+            className="text-3xl sm:text-4xl font-bold font-display text-center mb-4"
+          >
+            Frequently Asked <span className="text-primary">Questions</span>
+          </motion.h2>
+          <motion.p
+            initial="hidden" whileInView="visible" viewport={{ once: true }}
+            variants={fadeUp}
+            className="text-muted-foreground text-center mb-12 max-w-lg mx-auto"
+          >
+            Got questions? We've got answers.
+          </motion.p>
+
+          <motion.div
+            initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}
+            variants={staggerContainer}
+          >
+            <Accordion type="single" collapsible className="space-y-3">
+              {[
+                {
+                  q: "Is this safe? Will my account get banned?",
+                  a: "Absolutely safe. X Premium is delivered directly by X as an official gift to your account. There is zero risk of any ban or suspension.",
+                },
+                {
+                  q: "How long does it take to receive X Premium?",
+                  a: "Usually within a few minutes to a couple of hours after payment is confirmed. We're available 24/7 to process your order.",
+                },
+                {
+                  q: "What payment methods do you accept?",
+                  a: "We accept USDT (Tether) via wallet transfer or exchange. Full payment instructions are provided after you message us on Telegram.",
+                },
+                {
+                  q: "Can I buy X Premium if I already have it?",
+                  a: "No — if your account is already verified, you need to wait for your current subscription to expire, cancel it, and then contact us.",
+                },
+                {
+                  q: "What if my account is not eligible?",
+                  a: "If your account isn't eligible right away, wait 1–3 days and message us again. Most accounts become eligible within that time.",
+                },
+                {
+                  q: "Can I get a refund?",
+                  a: "Since X Premium is delivered directly to your account by X, refunds are not possible once the gift has been sent. Please make sure your account is eligible before purchasing.",
+                },
+                {
+                  q: "Do I need to share my password?",
+                  a: "Never! We only need your X profile link. We will never ask for your password or any login credentials.",
+                },
+              ].map((faq, i) => (
+                <motion.div key={i} variants={fadeUp}>
+                  <AccordionItem value={`faq-${i}`} className="rounded-xl border border-border/50 bg-card/50 backdrop-blur px-5 data-[state=open]:border-primary/30 transition-colors">
+                    <AccordionTrigger className="text-sm font-semibold text-foreground hover:text-primary hover:no-underline py-4">
+                      {faq.q}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-sm text-muted-foreground leading-relaxed pb-4">
+                      {faq.a}
+                    </AccordionContent>
+                  </AccordionItem>
+                </motion.div>
+              ))}
+            </Accordion>
+          </motion.div>
+        </div>
       </section>
 
       {/* Footer */}
