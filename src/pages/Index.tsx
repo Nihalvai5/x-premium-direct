@@ -172,6 +172,33 @@ const Index = () => {
               </div>
             ))}
           </div>
+
+          {/* How to Cancel Subscription */}
+          <div className="mt-12">
+            <h3 className="text-xl sm:text-2xl font-bold font-display text-center mb-2">
+              How to <span className="text-primary">Cancel</span> an Existing Subscription
+            </h3>
+            <p className="text-sm text-muted-foreground text-center mb-8">
+              If you already have X Premium via Google Play, follow these steps to cancel it first
+            </p>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {[
+                { step: "1", title: "Open Play Store", desc: "Tap your profile icon → Payments & subscriptions" },
+                { step: "2", title: "Go to Subscriptions", desc: "Select \"Subscriptions\" from the menu" },
+                { step: "3", title: "Find X Premium", desc: "Look under Expired or Active and tap \"Remove\"" },
+                { step: "4", title: "Confirm Removal", desc: "Tap \"Remove\" to confirm — then you're ready!" },
+              ].map((item) => (
+                <div key={item.step} className="p-5 rounded-xl bg-card/50 backdrop-blur border border-border/50 text-center">
+                  <div className="w-10 h-10 rounded-full bg-destructive/10 border border-destructive/20 flex items-center justify-center mx-auto mb-3">
+                    <span className="text-sm font-bold text-destructive">{item.step}</span>
+                  </div>
+                  <h4 className="font-display font-semibold text-foreground text-sm mb-1">{item.title}</h4>
+                  <p className="text-xs text-muted-foreground">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
