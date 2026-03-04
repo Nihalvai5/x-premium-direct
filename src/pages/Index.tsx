@@ -13,16 +13,52 @@ import solanaLogo from "@/assets/solana.png";
 const TELEGRAM_LINK = "https://t.me/Nihalvai332?text=1️⃣%20My%20X%20profile%20link:%0A2️⃣%20Months:%206%20Months%0A3️⃣%20Payment:%20Wallet";
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } }
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } }
+};
+
+const fadeLeft = {
+  hidden: { opacity: 0, x: -40 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" as const } }
+};
+
+const fadeRight = {
+  hidden: { opacity: 0, x: 40 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" as const } }
+};
+
+const scaleUp = {
+  hidden: { opacity: 0, scale: 0.85 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" as const } }
+};
+
+const rotateIn = {
+  hidden: { opacity: 0, rotate: -8, scale: 0.9 },
+  visible: { opacity: 1, rotate: 0, scale: 1, transition: { duration: 0.6, ease: "easeOut" as const } }
 };
 
 const staggerContainer = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.12 } }
+  visible: { transition: { staggerChildren: 0.15 } }
 };
 
-const scaleHover = { scale: 1.02, transition: { duration: 0.2 } };
+const staggerFast = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.08 } }
+};
+
+const scaleHover = { scale: 1.04, transition: { duration: 0.25, ease: "easeOut" as const } };
+
+const glowPulse = {
+  animate: {
+    boxShadow: [
+      "0 0 20px hsl(45,100%,55%,0.1)",
+      "0 0 40px hsl(45,100%,55%,0.25)",
+      "0 0 20px hsl(45,100%,55%,0.1)"
+    ],
+    transition: { duration: 2.5, repeat: Infinity, ease: "easeInOut" }
+  }
+};
 
 const Index = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -151,13 +187,20 @@ const Index = () => {
           animate="visible"
           variants={staggerContainer}>
           
-          <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 mb-8">
+          <motion.div variants={scaleUp} className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 mb-8">
             <Crown className="w-4 h-4 text-primary animate-float" />
             <span className="text-sm font-medium text-primary">Official X Gift System</span>
           </motion.div>
 
-          <motion.h1 variants={fadeUp} className="text-4xl sm:text-5xl md:text-7xl font-bold font-display leading-tight mb-6">
-            Get <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-purple to-accent">X Premium</span>
+          <motion.h1
+            variants={fadeUp}
+            className="text-4xl sm:text-5xl md:text-7xl font-bold font-display leading-tight mb-6">
+            Get <motion.span
+              className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-purple to-accent inline-block"
+              animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
+              style={{ backgroundSize: "200% 200%" }}
+            >X Premium</motion.span>
             <br />
             <span className="text-foreground/90">Delivered Directly by X</span>
           </motion.h1>
@@ -166,12 +209,17 @@ const Index = () => {
             Available 24/7 • Fast & Safe • Starting at just <span className="text-primary font-semibold">$5</span>
           </motion.p>
 
-          <motion.div variants={fadeUp}>
+          <motion.div variants={scaleUp}>
             <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer">
-              <Button size="lg" className="text-lg px-8 py-6 rounded-full bg-gradient-to-r from-primary to-gold shadow-[0_0_30px_hsl(45,100%,55%,0.3)] hover:shadow-[0_0_50px_hsl(45,100%,55%,0.5)] hover:scale-105 transition-all duration-300">
-                <Send className="w-5 h-5 mr-2" />
-                Message on Telegram
-              </Button>
+              <motion.div
+                whileHover={{ scale: 1.08 }}
+                whileTap={{ scale: 0.96 }}
+                transition={{ type: "spring", stiffness: 400, damping: 15 }}>
+                <Button size="lg" className="text-lg px-8 py-6 rounded-full bg-gradient-to-r from-primary to-gold shadow-[0_0_30px_hsl(45,100%,55%,0.3)] hover:shadow-[0_0_50px_hsl(45,100%,55%,0.5)] transition-all duration-300">
+                  <Send className="w-5 h-5 mr-2" />
+                  Message on Telegram
+                </Button>
+              </motion.div>
             </a>
           </motion.div>
         </motion.div>
@@ -197,7 +245,7 @@ const Index = () => {
             variants={staggerContainer}>
             
             {/* 3 Months Card */}
-            <motion.div variants={fadeUp} whileHover={scaleHover}>
+            <motion.div variants={fadeLeft} whileHover={scaleHover}>
               <Card className="relative border-border/50 bg-card/50 backdrop-blur-xl hover:border-primary/30 transition-all duration-300 h-full">
                 <CardHeader className="text-center pb-2">
                   <CardTitle className="text-xl font-display">3 Months</CardTitle>
@@ -237,7 +285,7 @@ const Index = () => {
             </motion.div>
 
             {/* 6 Months Card */}
-            <motion.div variants={fadeUp} whileHover={scaleHover}>
+            <motion.div variants={fadeRight} whileHover={scaleHover}>
               <Card className="relative border-primary/40 bg-card/50 backdrop-blur-xl shadow-[0_0_40px_hsl(45,100%,55%,0.1)] hover:shadow-[0_0_60px_hsl(45,100%,55%,0.15)] transition-all duration-300 h-full">
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                   <Badge className="bg-gradient-to-r from-primary to-gold text-primary-foreground border-0 px-4 py-1 text-xs font-semibold shadow-lg">
@@ -309,7 +357,7 @@ const Index = () => {
           <motion.div
             className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mt-10"
             initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}
-            variants={staggerContainer}>
+            variants={staggerFast}>
             
             {[
             { name: "BEP20 / ERC20", logo: null },
@@ -318,7 +366,7 @@ const Index = () => {
             { name: "MEXC", logo: mexcLogo },
             { name: "Solana", logo: solanaLogo }].
             map((method) =>
-            <motion.div key={method.name} variants={fadeUp} whileHover={scaleHover}>
+            <motion.div key={method.name} variants={scaleUp} whileHover={scaleHover}>
                 <div className="flex flex-col items-center gap-3 p-6 rounded-2xl bg-card/50 backdrop-blur border border-border/50 hover:border-primary/30 transition-all duration-300 h-full">
                   {method.logo ?
                 <img src={method.logo} alt={method.name} className="w-12 h-12 rounded-xl object-cover" /> :
@@ -348,7 +396,7 @@ const Index = () => {
           <motion.div
             className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
             initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}
-            variants={staggerContainer}>
+            variants={staggerFast}>
             
             {[
             { step: "1", icon: Send, title: "Send Profile Link", desc: "Share your X profile link via Telegram" },
@@ -356,7 +404,7 @@ const Index = () => {
             { step: "3", icon: Zap, title: "Pay Securely", desc: "Wallet or Exchange — your choice" },
             { step: "4", icon: Check, title: "Get Premium", desc: "Receive X Premium directly on your account" }].
             map((item) =>
-            <motion.div key={item.step} variants={fadeUp} whileHover={scaleHover} className="relative group">
+            <motion.div key={item.step} variants={rotateIn} whileHover={scaleHover} className="relative group">
                 <div className="p-6 rounded-2xl bg-card/50 backdrop-blur border border-border/50 hover:border-primary/30 transition-all duration-300 text-center h-full">
                   <div className="w-12 h-12 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-4">
                     <item.icon className="w-5 h-5 text-primary" />
@@ -441,7 +489,7 @@ const Index = () => {
         <motion.div
           className="max-w-3xl mx-auto"
           initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}
-          variants={fadeUp}>
+          variants={scaleUp}>
           
           <div className="relative rounded-2xl overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-secondary/20 via-accent/20 to-primary/20" />
@@ -516,7 +564,7 @@ const Index = () => {
               rating: 5
             }].
             map((review, i) =>
-            <motion.div key={i} variants={fadeUp} whileHover={scaleHover}>
+            <motion.div key={i} variants={scaleUp} whileHover={scaleHover}>
                 <div className="p-6 rounded-2xl bg-card/50 backdrop-blur border border-border/50 hover:border-primary/30 transition-all duration-300 h-full flex flex-col">
                   <div className="flex gap-1 mb-4">
                     {Array.from({ length: review.rating }).map((_, j) =>
