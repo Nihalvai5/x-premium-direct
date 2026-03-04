@@ -480,37 +480,37 @@ const Index = () => {
             
             {[
             {
-              name: "Alex R.",
+              name: "Cooper",
               handle: "@alex_dev",
               text: "Got my verified badge in under 30 minutes! Super fast and completely safe. Highly recommend this service.",
               rating: 5
             },
             {
-              name: "Sarah M.",
+              name: "Georgi",
               handle: "@sarahcreates",
               text: "I was skeptical at first, but the process was smooth and legit. My account got Premium directly from X. Amazing!",
               rating: 5
             },
             {
-              name: "James K.",
+              name: "Brandão",
               handle: "@jamesk_crypto",
               text: "Best deal I've found for X Premium. Paid $8 for 6 months — can't beat that. Already renewed once!",
               rating: 5
             },
             {
-              name: "Priya D.",
+              name: "Matheus",
               handle: "@priya_writes",
               text: "The seller was super responsive on Telegram and walked me through the whole process. 10/10 experience.",
               rating: 5
             },
             {
-              name: "Omar T.",
+              name: "Daemon",
               handle: "@omar_trades",
               text: "Paid with Binance, got verified the same day. No issues at all. Will be recommending to my followers.",
               rating: 5
             },
             {
-              name: "Lisa W.",
+              name: "Ben",
               handle: "@lisawanders",
               text: "Finally got the blue checkmark without paying the full price. Legitimate service, very professional.",
               rating: 5
