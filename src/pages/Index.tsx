@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, Crown, ExternalLink, MessageCircle, Send, Shield, Star, Zap } from "lucide-react";
+import { BarChart3, Check, CheckCircle, Crown, DollarSign, ExternalLink, MessageCircle, MessageSquare, Pen, Send, Shield, Sparkles, Star, Users, Zap } from "lucide-react";
 
 const TELEGRAM_LINK = "https://t.me/Nihalvai332";
 
@@ -45,7 +45,7 @@ const Index = () => {
       <section className="relative py-20 px-4">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-bold font-display text-center mb-4">
-            Simple <span className="text-primary">Pricing</span>
+            Get X Premium <span className="text-primary">Verified Badge</span>
           </h2>
           <p className="text-muted-foreground text-center mb-12 max-w-lg mx-auto">
             Choose your plan and get X Premium delivered directly to your account
@@ -56,25 +56,35 @@ const Index = () => {
             <Card className="relative border-border/50 bg-card/50 backdrop-blur-xl hover:border-primary/30 transition-all duration-300">
               <CardHeader className="text-center pb-2">
                 <CardTitle className="text-xl font-display">3 Months</CardTitle>
-                <div className="mt-4">
+                <div className="mt-4 flex items-baseline justify-center gap-2">
+                  <span className="text-lg text-muted-foreground line-through">$18</span>
                   <span className="text-5xl font-bold font-display text-foreground">$5</span>
+                  <span className="text-sm text-muted-foreground">USDT</span>
                 </div>
+                <Badge className="mt-2 bg-primary/20 text-primary border-primary/30 text-xs">Save 72%</Badge>
               </CardHeader>
               <CardContent className="space-y-4 pt-4">
                 <ul className="space-y-3">
-                  <li className="flex items-center gap-3 text-sm text-muted-foreground">
-                    <Check className="w-4 h-4 text-primary flex-shrink-0" /> X Premium features
-                  </li>
-                  <li className="flex items-center gap-3 text-sm text-muted-foreground">
-                    <Check className="w-4 h-4 text-primary flex-shrink-0" /> Official X delivery
-                  </li>
-                  <li className="flex items-center gap-3 text-sm text-muted-foreground">
-                    <Check className="w-4 h-4 text-primary flex-shrink-0" /> Fast activation
-                  </li>
+                  {[
+                    { icon: CheckCircle, label: "Verified checkmark" },
+                    { icon: Sparkles, label: "Grok with increased limits" },
+                    { icon: Sparkles, label: "Tag @Grok to create images" },
+                    { icon: BarChart3, label: "Advanced analytics" },
+                    { icon: Star, label: "Less ads in your feeds" },
+                    { icon: MessageSquare, label: "Boosted replies" },
+                    { icon: Pen, label: "Write Articles" },
+                    { icon: DollarSign, label: "Get paid to post" },
+                    { icon: Users, label: "Creator Subscriptions" },
+                    { icon: Crown, label: "X Pro" },
+                  ].map((feat, i) => (
+                    <li key={i} className="flex items-center gap-3 text-sm text-muted-foreground">
+                      <feat.icon className="w-4 h-4 text-primary flex-shrink-0" /> {feat.label}
+                    </li>
+                  ))}
                 </ul>
                 <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block">
-                  <Button variant="outline" className="w-full mt-4 rounded-full border-primary/30 hover:bg-primary/10 hover:text-primary">
-                    Get Started <ExternalLink className="w-4 h-4 ml-2" />
+                  <Button variant="outline" className="w-full mt-4 rounded-full border-primary/30 hover:bg-primary/10 hover:text-primary font-bold text-base py-5">
+                    Buy Now
                   </Button>
                 </a>
               </CardContent>
@@ -84,33 +94,40 @@ const Index = () => {
             <Card className="relative border-primary/40 bg-card/50 backdrop-blur-xl shadow-[0_0_40px_hsl(45,100%,55%,0.1)] hover:shadow-[0_0_60px_hsl(45,100%,55%,0.15)] transition-all duration-300">
               <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                 <Badge className="bg-gradient-to-r from-primary to-gold text-primary-foreground border-0 px-4 py-1 text-xs font-semibold shadow-lg">
-                  Recommended · Limited Offer
+                  <Sparkles className="w-3 h-3 mr-1" /> Most Popular
                 </Badge>
               </div>
               <CardHeader className="text-center pb-2 pt-8">
                 <CardTitle className="text-xl font-display">6 Months</CardTitle>
-                <div className="mt-4">
+                <div className="mt-4 flex items-baseline justify-center gap-2">
+                  <span className="text-lg text-muted-foreground line-through">$36</span>
                   <span className="text-5xl font-bold font-display text-primary">$8</span>
+                  <span className="text-sm text-muted-foreground">USDT</span>
                 </div>
+                <Badge className="mt-2 bg-primary/20 text-primary border-primary/30 text-xs">Save 78%</Badge>
               </CardHeader>
               <CardContent className="space-y-4 pt-4">
                 <ul className="space-y-3">
-                  <li className="flex items-center gap-3 text-sm text-muted-foreground">
-                    <Check className="w-4 h-4 text-primary flex-shrink-0" /> X Premium features
-                  </li>
-                  <li className="flex items-center gap-3 text-sm text-muted-foreground">
-                    <Check className="w-4 h-4 text-primary flex-shrink-0" /> Official X delivery
-                  </li>
-                  <li className="flex items-center gap-3 text-sm text-muted-foreground">
-                    <Check className="w-4 h-4 text-primary flex-shrink-0" /> Best value — save more
-                  </li>
-                  <li className="flex items-center gap-3 text-sm text-muted-foreground">
-                    <Star className="w-4 h-4 text-primary flex-shrink-0" /> Extended premium access
-                  </li>
+                  {[
+                    { icon: CheckCircle, label: "Verified checkmark" },
+                    { icon: Sparkles, label: "Grok with increased limits" },
+                    { icon: Sparkles, label: "Tag @Grok to create images" },
+                    { icon: BarChart3, label: "Advanced analytics" },
+                    { icon: Star, label: "Less ads in your feeds" },
+                    { icon: MessageSquare, label: "Boosted replies" },
+                    { icon: Pen, label: "Write Articles" },
+                    { icon: DollarSign, label: "Get paid to post" },
+                    { icon: Users, label: "Creator Subscriptions" },
+                    { icon: Crown, label: "X Pro" },
+                  ].map((feat, i) => (
+                    <li key={i} className="flex items-center gap-3 text-sm text-muted-foreground">
+                      <feat.icon className="w-4 h-4 text-primary flex-shrink-0" /> {feat.label}
+                    </li>
+                  ))}
                 </ul>
                 <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block">
-                  <Button className="w-full mt-4 rounded-full bg-gradient-to-r from-primary to-gold text-primary-foreground shadow-[0_0_20px_hsl(45,100%,55%,0.2)] hover:shadow-[0_0_30px_hsl(45,100%,55%,0.4)]">
-                    Get Started <ExternalLink className="w-4 h-4 ml-2" />
+                  <Button className="w-full mt-4 rounded-full bg-gradient-to-r from-primary to-gold text-primary-foreground shadow-[0_0_20px_hsl(45,100%,55%,0.2)] hover:shadow-[0_0_30px_hsl(45,100%,55%,0.4)] font-bold text-base py-5">
+                    Buy Now
                   </Button>
                 </a>
               </CardContent>
