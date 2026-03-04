@@ -27,10 +27,25 @@ const scaleHover = { scale: 1.02, transition: { duration: 0.2 } };
 const Index = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+
+      const sections = ["#faq", "#how-it-works", "#payment", "#pricing", "#hero"];
+      for (const id of sections) {
+        const el = document.querySelector(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 120 && rect.bottom > 120) {
+            setActiveSection(id);
+            return;
+          }
+        }
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -69,7 +84,11 @@ const Index = () => {
               <button
                 key={link.href}
                 onClick={() => scrollToSection(link.href)}
-                className="px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-accent/50"
+                className={`px-3 py-2 text-sm font-medium transition-colors rounded-lg ${
+                  activeSection === link.href
+                    ? "text-primary bg-primary/10"
+                    : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
+                }`}
               >
                 {link.label}
               </button>
@@ -98,10 +117,14 @@ const Index = () => {
             className="sm:hidden bg-background/95 backdrop-blur-xl border-b border-border/50 px-4 pb-4"
           >
             {navLinks.map((link) => (
-              <button
+               <button
                 key={link.href}
                 onClick={() => scrollToSection(link.href)}
-                className="block w-full text-left px-3 py-3 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-accent/50"
+                className={`block w-full text-left px-3 py-3 text-sm font-medium transition-colors rounded-lg ${
+                  activeSection === link.href
+                    ? "text-primary bg-primary/10"
+                    : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
+                }`}
               >
                 {link.label}
               </button>
