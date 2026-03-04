@@ -461,6 +461,87 @@ const Index = () => {
         </motion.div>
       </section>
 
+      {/* Testimonials Section */}
+      <section className="py-20 px-4">
+        <div className="max-w-4xl mx-auto">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={staggerContainer}>
+            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-bold font-display text-center mb-4">
+              What Our <span className="text-primary">Customers</span> Say
+            </motion.h2>
+            <motion.p variants={fadeUp} className="text-muted-foreground text-center mb-12 max-w-lg mx-auto">
+              Trusted by hundreds of satisfied X users worldwide
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}
+            variants={staggerContainer}
+          >
+            {[
+              {
+                name: "Alex R.",
+                handle: "@alex_dev",
+                text: "Got my verified badge in under 30 minutes! Super fast and completely safe. Highly recommend this service.",
+                rating: 5,
+              },
+              {
+                name: "Sarah M.",
+                handle: "@sarahcreates",
+                text: "I was skeptical at first, but the process was smooth and legit. My account got Premium directly from X. Amazing!",
+                rating: 5,
+              },
+              {
+                name: "James K.",
+                handle: "@jamesk_crypto",
+                text: "Best deal I've found for X Premium. Paid $8 for 6 months — can't beat that. Already renewed once!",
+                rating: 5,
+              },
+              {
+                name: "Priya D.",
+                handle: "@priya_writes",
+                text: "The seller was super responsive on Telegram and walked me through the whole process. 10/10 experience.",
+                rating: 5,
+              },
+              {
+                name: "Omar T.",
+                handle: "@omar_trades",
+                text: "Paid with Binance, got verified the same day. No issues at all. Will be recommending to my followers.",
+                rating: 5,
+              },
+              {
+                name: "Lisa W.",
+                handle: "@lisawanders",
+                text: "Finally got the blue checkmark without paying the full price. Legitimate service, very professional.",
+                rating: 5,
+              },
+            ].map((review, i) => (
+              <motion.div key={i} variants={fadeUp} whileHover={scaleHover}>
+                <div className="p-6 rounded-2xl bg-card/50 backdrop-blur border border-border/50 hover:border-primary/30 transition-all duration-300 h-full flex flex-col">
+                  <div className="flex gap-1 mb-4">
+                    {Array.from({ length: review.rating }).map((_, j) => (
+                      <Star key={j} className="w-4 h-4 fill-primary text-primary" />
+                    ))}
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
+                    "{review.text}"
+                  </p>
+                  <div className="flex items-center gap-3 pt-4 border-t border-border/30">
+                    <div className="w-9 h-9 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center">
+                      <span className="text-sm font-bold text-primary">{review.name[0]}</span>
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-foreground">{review.name}</p>
+                      <p className="text-xs text-muted-foreground">{review.handle}</p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* FAQ Section */}
       <section id="faq" className="py-20 px-4">
         <div className="max-w-3xl mx-auto">
