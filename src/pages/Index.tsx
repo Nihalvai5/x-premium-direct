@@ -1,8 +1,9 @@
+import { useState, useEffect } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { BarChart3, Check, CheckCircle, Crown, DollarSign, ExternalLink, HelpCircle, MessageCircle, MessageSquare, Pen, Send, Shield, Sparkles, Star, Users, Wallet, Zap } from "lucide-react";
+import { BarChart3, Check, CheckCircle, Crown, DollarSign, ExternalLink, HelpCircle, Menu, MessageCircle, MessageSquare, Pen, Send, Shield, Sparkles, Star, Users, Wallet, X, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import binanceLogo from "@/assets/binance.png";
 import bybitLogo from "@/assets/bybit.png";
@@ -24,10 +25,98 @@ const staggerContainer = {
 const scaleHover = { scale: 1.02, transition: { duration: 0.2 } };
 
 const Index = () => {
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const navLinks = [
+    { label: "Pricing", href: "#pricing" },
+    { label: "Payment", href: "#payment" },
+    { label: "How It Works", href: "#how-it-works" },
+    { label: "FAQ", href: "#faq" },
+  ];
+
+  const scrollToSection = (href: string) => {
+    const el = document.querySelector(href);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+    setMobileMenuOpen(false);
+  };
+
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
+      {/* Sticky Header */}
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? "bg-background/80 backdrop-blur-xl border-b border-border/50 shadow-lg shadow-background/20"
+            : "bg-transparent"
+        }`}
+      >
+        <div className="max-w-5xl mx-auto px-4 flex items-center justify-between h-16">
+          <button onClick={() => scrollToSection("#hero")} className="flex items-center gap-2 group">
+            <Crown className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
+            <span className="font-display font-bold text-lg text-foreground">X Premium</span>
+          </button>
+
+          {/* Desktop Nav */}
+          <nav className="hidden sm:flex items-center gap-1">
+            {navLinks.map((link) => (
+              <button
+                key={link.href}
+                onClick={() => scrollToSection(link.href)}
+                className="px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-accent/50"
+              >
+                {link.label}
+              </button>
+            ))}
+            <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer">
+              <Button size="sm" className="ml-2 bg-primary hover:bg-primary/90 text-primary-foreground">
+                <Send className="w-3.5 h-3.5 mr-1.5" /> Order Now
+              </Button>
+            </a>
+          </nav>
+
+          {/* Mobile Menu Toggle */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="sm:hidden p-2 text-muted-foreground hover:text-foreground transition-colors"
+          >
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="sm:hidden bg-background/95 backdrop-blur-xl border-b border-border/50 px-4 pb-4"
+          >
+            {navLinks.map((link) => (
+              <button
+                key={link.href}
+                onClick={() => scrollToSection(link.href)}
+                className="block w-full text-left px-3 py-3 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-accent/50"
+              >
+                {link.label}
+              </button>
+            ))}
+            <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block mt-2">
+              <Button size="sm" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
+                <Send className="w-3.5 h-3.5 mr-1.5" /> Order Now
+              </Button>
+            </a>
+          </motion.div>
+        )}
+      </header>
+
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center px-4 py-20">
+      <section id="hero" className="relative min-h-[90vh] flex items-center justify-center px-4 py-20">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-1/2 -left-1/2 w-[200%] h-[200%] bg-[radial-gradient(ellipse_at_30%_20%,hsl(260,60%,25%)_0%,transparent_50%),radial-gradient(ellipse_at_70%_60%,hsl(210,100%,20%)_0%,transparent_50%),radial-gradient(ellipse_at_50%_80%,hsl(45,100%,15%)_0%,transparent_40%)] animate-pulse-glow" />
         </div>
@@ -66,7 +155,7 @@ const Index = () => {
       </section>
 
       {/* Pricing Section */}
-      <section className="relative py-20 px-4">
+      <section id="pricing" className="relative py-20 px-4">
         <div className="max-w-4xl mx-auto">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={staggerContainer}>
             <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-bold font-display text-center mb-4">
@@ -183,7 +272,7 @@ const Index = () => {
       </section>
 
       {/* Payment Options */}
-      <section className="py-20 px-4">
+      <section id="payment" className="py-20 px-4">
         <div className="max-w-4xl mx-auto">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={staggerContainer}>
             <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-bold font-display text-center mb-4">
@@ -223,7 +312,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="py-20 px-4">
+      <section id="how-it-works" className="py-20 px-4">
         <div className="max-w-4xl mx-auto">
           <motion.h2
             initial="hidden" whileInView="visible" viewport={{ once: true }}
@@ -350,7 +439,7 @@ const Index = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 px-4">
+      <section id="faq" className="py-20 px-4">
         <div className="max-w-3xl mx-auto">
           <motion.h2
             initial="hidden" whileInView="visible" viewport={{ once: true }}
