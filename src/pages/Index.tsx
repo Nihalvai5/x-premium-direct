@@ -10,7 +10,7 @@ import bybitLogo from "@/assets/bybit.png";
 import mexcLogo from "@/assets/mexc.png";
 import solanaLogo from "@/assets/solana.png";
 
-const TELEGRAM_LINK = "https://t.me/Nihalvai332";
+const TELEGRAM_LINK = "https://t.me/Nihalvai332?text=1️⃣%20My%20X%20profile%20link:%0A2️⃣%20Months:%206%20Months%0A3️⃣%20Payment:%20Wallet";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
