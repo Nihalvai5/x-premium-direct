@@ -2,8 +2,12 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { BarChart3, Check, CheckCircle, Crown, DollarSign, ExternalLink, HelpCircle, MessageCircle, MessageSquare, Pen, Send, Shield, Sparkles, Star, Users, Zap } from "lucide-react";
+import { BarChart3, Check, CheckCircle, Crown, DollarSign, ExternalLink, HelpCircle, MessageCircle, MessageSquare, Pen, Send, Shield, Sparkles, Star, Users, Wallet, Zap } from "lucide-react";
 import { motion } from "framer-motion";
+import binanceLogo from "@/assets/binance.png";
+import bybitLogo from "@/assets/bybit.png";
+import mexcLogo from "@/assets/mexc.png";
+import solanaLogo from "@/assets/solana.png";
 
 const TELEGRAM_LINK = "https://t.me/Nihalvai332";
 
@@ -178,7 +182,47 @@ const Index = () => {
         </div>
       </section>
 
-      {/* How It Works */}
+      {/* Payment Options */}
+      <section className="py-20 px-4">
+        <div className="max-w-4xl mx-auto">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={staggerContainer}>
+            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-bold font-display text-center mb-4">
+              Payment <span className="text-primary">Options</span>
+            </motion.h2>
+            <motion.p variants={fadeUp} className="text-muted-foreground text-center mb-4 max-w-xl mx-auto text-sm">
+              ✅ Please select your payment option carefully and double-check that the UID or wallet address is correct before proceeding.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mt-10"
+            initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}
+            variants={staggerContainer}
+          >
+            {[
+              { name: "BEP20 / ERC20", logo: null },
+              { name: "Binance", logo: binanceLogo },
+              { name: "Bybit", logo: bybitLogo },
+              { name: "MEXC", logo: mexcLogo },
+              { name: "Solana", logo: solanaLogo },
+            ].map((method) => (
+              <motion.div key={method.name} variants={fadeUp} whileHover={scaleHover}>
+                <div className="flex flex-col items-center gap-3 p-6 rounded-2xl bg-card/50 backdrop-blur border border-border/50 hover:border-primary/30 transition-all duration-300 h-full">
+                  {method.logo ? (
+                    <img src={method.logo} alt={method.name} className="w-12 h-12 rounded-xl object-cover" />
+                  ) : (
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center">
+                      <Wallet className="w-6 h-6 text-primary" />
+                    </div>
+                  )}
+                  <span className="text-sm font-semibold font-display text-foreground text-center">{method.name}</span>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       <section className="py-20 px-4">
         <div className="max-w-4xl mx-auto">
           <motion.h2
