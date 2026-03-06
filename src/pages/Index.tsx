@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { BarChart3, Check, CheckCircle, Crown, DollarSign, ExternalLink, HelpCircle, Menu, MessageCircle, MessageSquare, Pen, Send, Shield, Sparkles, Star, Users, Wallet, X, Zap } from "lucide-react";
+import { BarChart3, Check, CheckCircle, Clock, Crown, DollarSign, ExternalLink, Globe, HelpCircle, Menu, MessageCircle, MessageSquare, Pen, Send, Shield, Sparkles, Star, ThumbsUp, Users, Wallet, X, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import binanceLogo from "@/assets/binance.png";
 import bybitLogo from "@/assets/bybit.png";
@@ -59,12 +59,37 @@ const glowPulse = {
     transition: { duration: 2.5, repeat: Infinity, ease: "easeInOut" }
   }
 };
+// Animated counter hook
+const useCounter = (target: number, duration = 2000, startCounting: boolean) => {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    if (!startCounting) return;
+    let start = 0;
+    const increment = target / (duration / 16);
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= target) {
+        setCount(target);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, 16);
+    return () => clearInterval(timer);
+  }, [target, duration, startCounting]);
+  return count;
+};
 
 const Index = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [showFloatingCta, setShowFloatingCta] = useState(false);
+  const [statsInView, setStatsInView] = useState(false);
+
+  const customersServed = useCounter(500, 2000, statsInView);
+  const avgDeliveryTime = useCounter(30, 1500, statsInView);
+  const satisfactionRate = useCounter(99, 2000, statsInView);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -513,6 +538,77 @@ const Index = () => {
                 Everything is delivered via X's official system directly to your account. There is <span className="text-primary font-semibold">no risk</span> of any issues.
               </p>
             </div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-20 px-4">
+        <motion.div
+          className="max-w-5xl mx-auto"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={staggerContainer}
+          onViewportEnter={() => setStatsInView(true)}
+        >
+          <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-bold font-display text-center mb-12">
+            Trusted by <span className="text-primary">Hundreds</span>
+          </motion.h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Numeric stat: Customers */}
+            <motion.div variants={scaleUp} className="relative rounded-2xl border border-border/50 bg-card/50 backdrop-blur p-8 text-center overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <Users className="w-8 h-8 text-primary mx-auto mb-4" />
+              <div className="text-4xl sm:text-5xl font-bold font-display text-foreground mb-2">
+                {customersServed}+
+              </div>
+              <p className="text-sm text-muted-foreground">Customers Served</p>
+            </motion.div>
+
+            {/* Numeric stat: Delivery Time */}
+            <motion.div variants={scaleUp} className="relative rounded-2xl border border-border/50 bg-card/50 backdrop-blur p-8 text-center overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <Clock className="w-8 h-8 text-accent mx-auto mb-4" />
+              <div className="text-4xl sm:text-5xl font-bold font-display text-foreground mb-2">
+                {avgDeliveryTime}<span className="text-2xl text-muted-foreground">min</span>
+              </div>
+              <p className="text-sm text-muted-foreground">Avg. Delivery Time</p>
+            </motion.div>
+
+            {/* Numeric stat: Satisfaction */}
+            <motion.div variants={scaleUp} className="relative rounded-2xl border border-border/50 bg-card/50 backdrop-blur p-8 text-center overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <ThumbsUp className="w-8 h-8 text-primary mx-auto mb-4" />
+              <div className="text-4xl sm:text-5xl font-bold font-display text-foreground mb-2">
+                {satisfactionRate}<span className="text-2xl text-primary">%</span>
+              </div>
+              <p className="text-sm text-muted-foreground">Satisfaction Rate</p>
+            </motion.div>
+
+            {/* Non-numeric stat: Availability */}
+            <motion.div variants={scaleUp} className="relative rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/10 via-card/50 to-accent/10 backdrop-blur p-8 text-center overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <motion.div
+                animate={{ rotate: [0, 360] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+              >
+                <Globe className="w-8 h-8 text-primary mx-auto" />
+              </motion.div>
+              <div className="mt-4 text-2xl sm:text-3xl font-bold font-display text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent mb-2">
+                24/7
+              </div>
+              <p className="text-sm text-muted-foreground">Always Available</p>
+              <motion.div
+                className="mt-3 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-xs text-primary font-medium"
+                animate={{ opacity: [0.7, 1, 0.7] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                Online Now
+              </motion.div>
+            </motion.div>
           </div>
         </motion.div>
       </section>
