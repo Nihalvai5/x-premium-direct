@@ -64,6 +64,7 @@ const Index = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [showFloatingCta, setShowFloatingCta] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
