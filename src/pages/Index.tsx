@@ -85,6 +85,11 @@ const Index = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [showFloatingCta, setShowFloatingCta] = useState(false);
+  const [statsInView, setStatsInView] = useState(false);
+
+  const customersServed = useCounter(500, 2000, statsInView);
+  const avgDeliveryTime = useCounter(30, 1500, statsInView);
+  const satisfactionRate = useCounter(99, 2000, statsInView);
 
   useEffect(() => {
     const handleScroll = () => {
