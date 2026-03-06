@@ -1,21 +1,23 @@
 
 
-## Verification Complete -- All Animations Working
+# Add Animations to Landing Page
 
-All scroll-triggered animations across every section of the page are firing correctly and rendering smoothly. No code changes needed.
+Add scroll-triggered fade-in animations and interactive hover effects throughout the page.
 
-### Sections Verified
+## Changes
 
-| Section | Animation Type | Status |
-|---------|---------------|--------|
-| Hero | Gradient text loop, spring CTA | Working |
-| Pricing | fadeLeft / fadeRight slide-in | Working |
-| Payment Options | staggerFast sequential reveal | Working |
-| How It Works | rotateIn step cards | Working |
-| Trust Banner (100% Safe) | scaleUp pop-in | Working |
-| Testimonials | scaleUp pop-in + hover scale | Working |
-| FAQ | Staggered fadeUp accordion | Working |
-| Footer | Fade-in | Working |
+### 1. Install framer-motion
+Add `framer-motion` for scroll-triggered animations.
 
-No console errors detected. All `framer-motion` `whileInView` triggers are functioning as expected with `viewport={{ once: true }}` ensuring animations play once per session.
+### 2. Update `src/pages/Index.tsx`
+- Wrap each section's content in `motion.div` with `whileInView` fade-up animations (opacity 0→1, translateY 20→0)
+- Stagger children in grids (pricing cards, how-it-works steps, notes)
+- Add hover scale effects on cards (`whileHover={{ scale: 1.02 }}`)
+- Add a subtle float animation to the hero shield/crown icon
+- CTA buttons get a gentle pulse or scale on hover
+
+### 3. Update `tailwind.config.ts`
+- Add `fade-in` keyframe and animation from the animation utilities context (if not already present)
+
+All animations will be subtle and performant, using `once: true` on viewport triggers so they only play once.
 
