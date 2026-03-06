@@ -691,6 +691,23 @@ const Index = () => {
           </p>
         </motion.div>
       </footer>
+
+      {/* Floating Order Now CTA */}
+      <motion.a
+        href={TELEGRAM_LINK}
+        target="_blank"
+        rel="noopener noreferrer"
+        initial={{ opacity: 0, y: 40, scale: 0.8 }}
+        animate={showFloatingCta ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 40, scale: 0.8 }}
+        transition={{ type: "spring", stiffness: 300, damping: 25 }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-primary-foreground font-bold shadow-lg pointer-events-auto"
+        style={{ pointerEvents: showFloatingCta ? "auto" : "none" }}
+      >
+        <Send className="w-5 h-5" />
+        Order Now
+      </motion.a>
     </div>);
 
 };
