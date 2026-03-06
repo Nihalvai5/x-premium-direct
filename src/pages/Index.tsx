@@ -59,8 +59,27 @@ const glowPulse = {
     transition: { duration: 2.5, repeat: Infinity, ease: "easeInOut" }
   }
 };
+// Animated counter hook
+const useCounter = (target: number, duration = 2000, startCounting: boolean) => {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    if (!startCounting) return;
+    let start = 0;
+    const increment = target / (duration / 16);
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= target) {
+        setCount(target);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, 16);
+    return () => clearInterval(timer);
+  }, [target, duration, startCounting]);
+  return count;
+};
 
-const Index = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
