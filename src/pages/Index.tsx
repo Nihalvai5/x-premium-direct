@@ -80,7 +80,7 @@ const useCounter = (target: number, duration = 2000, startCounting: boolean) => 
   return count;
 };
 
-  const [scrolled, setScrolled] = useState(false);
+  const Index = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [showFloatingCta, setShowFloatingCta] = useState(false);
