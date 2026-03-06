@@ -70,6 +70,13 @@ const Index = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
 
+      // Show floating CTA after scrolling past hero
+      const hero = document.querySelector("#hero");
+      if (hero) {
+        const heroBottom = hero.getBoundingClientRect().bottom;
+        setShowFloatingCta(heroBottom < 0);
+      }
+
       const sections = ["#faq", "#how-it-works", "#payment", "#pricing", "#hero"];
       for (const id of sections) {
         const el = document.querySelector(id);
