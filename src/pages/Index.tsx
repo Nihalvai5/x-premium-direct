@@ -542,6 +542,77 @@ const Index = () => {
         </motion.div>
       </section>
 
+      {/* Stats Section */}
+      <section className="py-20 px-4">
+        <motion.div
+          className="max-w-5xl mx-auto"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={staggerContainer}
+          onViewportEnter={() => setStatsInView(true)}
+        >
+          <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-bold font-display text-center mb-12">
+            Trusted by <span className="text-primary">Hundreds</span>
+          </motion.h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Numeric stat: Customers */}
+            <motion.div variants={scaleUp} className="relative rounded-2xl border border-border/50 bg-card/50 backdrop-blur p-8 text-center overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <Users className="w-8 h-8 text-primary mx-auto mb-4" />
+              <div className="text-4xl sm:text-5xl font-bold font-display text-foreground mb-2">
+                {customersServed}+
+              </div>
+              <p className="text-sm text-muted-foreground">Customers Served</p>
+            </motion.div>
+
+            {/* Numeric stat: Delivery Time */}
+            <motion.div variants={scaleUp} className="relative rounded-2xl border border-border/50 bg-card/50 backdrop-blur p-8 text-center overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <Clock className="w-8 h-8 text-accent mx-auto mb-4" />
+              <div className="text-4xl sm:text-5xl font-bold font-display text-foreground mb-2">
+                {avgDeliveryTime}<span className="text-2xl text-muted-foreground">min</span>
+              </div>
+              <p className="text-sm text-muted-foreground">Avg. Delivery Time</p>
+            </motion.div>
+
+            {/* Numeric stat: Satisfaction */}
+            <motion.div variants={scaleUp} className="relative rounded-2xl border border-border/50 bg-card/50 backdrop-blur p-8 text-center overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <ThumbsUp className="w-8 h-8 text-primary mx-auto mb-4" />
+              <div className="text-4xl sm:text-5xl font-bold font-display text-foreground mb-2">
+                {satisfactionRate}<span className="text-2xl text-primary">%</span>
+              </div>
+              <p className="text-sm text-muted-foreground">Satisfaction Rate</p>
+            </motion.div>
+
+            {/* Non-numeric stat: Availability */}
+            <motion.div variants={scaleUp} className="relative rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/10 via-card/50 to-accent/10 backdrop-blur p-8 text-center overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <motion.div
+                animate={{ rotate: [0, 360] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+              >
+                <Globe className="w-8 h-8 text-primary mx-auto" />
+              </motion.div>
+              <div className="mt-4 text-2xl sm:text-3xl font-bold font-display text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent mb-2">
+                24/7
+              </div>
+              <p className="text-sm text-muted-foreground">Always Available</p>
+              <motion.div
+                className="mt-3 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-xs text-primary font-medium"
+                animate={{ opacity: [0.7, 1, 0.7] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                Online Now
+              </motion.div>
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
+
       {/* Testimonials Section */}
       <section className="py-20 px-4">
         <div className="max-w-4xl mx-auto">
