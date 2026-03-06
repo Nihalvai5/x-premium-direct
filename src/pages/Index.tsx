@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { BarChart3, Check, CheckCircle, Crown, DollarSign, ExternalLink, HelpCircle, Menu, MessageCircle, MessageSquare, Pen, Send, Shield, Sparkles, Star, Users, Wallet, X, Zap } from "lucide-react";
+import { BarChart3, Check, CheckCircle, Clock, Crown, DollarSign, ExternalLink, Globe, HelpCircle, Menu, MessageCircle, MessageSquare, Pen, Send, Shield, Sparkles, Star, ThumbsUp, Users, Wallet, X, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import binanceLogo from "@/assets/binance.png";
 import bybitLogo from "@/assets/bybit.png";
