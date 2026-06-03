@@ -718,7 +718,7 @@ const Index = () => {
           onViewportEnter={() => setStatsInView(true)}
         >
           <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-bold font-display text-center mb-12">
-            Trusted by <span className="text-primary">Hundreds</span>
+            Trusted by <span className="text-primary">Thousands</span>
           </motion.h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
