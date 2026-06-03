@@ -786,7 +786,7 @@ const Index = () => {
               What Our <span className="text-primary">Customers</span> Say
             </motion.h2>
             <motion.p variants={fadeUp} className="text-muted-foreground text-center mb-12 max-w-lg mx-auto">
-              Trusted by hundreds of satisfied X users worldwide
+              Trusted by thousands of satisfied X users worldwide
             </motion.p>
           </motion.div>
 
