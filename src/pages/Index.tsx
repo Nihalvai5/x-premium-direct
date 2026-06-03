@@ -260,7 +260,7 @@ const Index = () => {
 
       {/* Pricing Section */}
       <section id="pricing" className="relative py-20 px-4">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={staggerContainer}>
             <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-bold font-display text-center mb-4">
               Get X Premium <span className="text-primary">Verified Badge</span>
@@ -271,14 +271,14 @@ const Index = () => {
           </motion.div>
 
           <motion.div
-            className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
             variants={staggerContainer}>
-            
+
             {/* 3 Months Card */}
-            <motion.div variants={fadeLeft} whileHover={scaleHover}>
+            <motion.div variants={fadeUp} whileHover={scaleHover}>
               <Card className="relative border-border/50 bg-card/50 backdrop-blur-xl hover:border-primary/30 transition-all duration-300 h-full">
                 <CardHeader className="text-center pb-2">
                   <CardTitle className="text-xl font-display">3 Months</CardTitle>
@@ -318,7 +318,7 @@ const Index = () => {
             </motion.div>
 
             {/* 6 Months Card */}
-            <motion.div variants={fadeRight} whileHover={scaleHover}>
+            <motion.div variants={fadeUp} whileHover={scaleHover}>
               <Card className="relative border-primary/40 bg-card/50 backdrop-blur-xl shadow-[0_0_40px_hsl(45,100%,55%,0.1)] hover:shadow-[0_0_60px_hsl(45,100%,55%,0.15)] transition-all duration-300 h-full">
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                   <Badge className="bg-gradient-to-r from-primary to-gold text-primary-foreground border-0 px-4 py-1 text-xs font-semibold shadow-lg">
@@ -355,6 +355,171 @@ const Index = () => {
                   </ul>
                   <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block">
                     <Button className="w-full mt-4 rounded-full bg-gradient-to-r from-primary to-gold text-primary-foreground shadow-[0_0_20px_hsl(45,100%,55%,0.2)] hover:shadow-[0_0_30px_hsl(45,100%,55%,0.4)] font-bold text-base py-5">
+                      Buy Now
+                    </Button>
+                  </a>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* 12 Months Card */}
+            <motion.div variants={fadeUp} whileHover={scaleHover}>
+              <Card className="relative border-border/50 bg-card/50 backdrop-blur-xl hover:border-primary/30 transition-all duration-300 h-full">
+                <CardHeader className="text-center pb-2">
+                  <CardTitle className="text-xl font-display">12 Months</CardTitle>
+                  <div className="mt-4 flex items-baseline justify-center gap-2">
+                    <span className="text-lg text-muted-foreground line-through">$72</span>
+                    <span className="text-5xl font-bold font-display text-foreground">$14</span>
+                    <span className="text-sm text-muted-foreground">USDT</span>
+                  </div>
+                  <Badge className="mt-2 bg-primary/20 text-primary border-primary/30 text-xs">Save 81%</Badge>
+                </CardHeader>
+                <CardContent className="space-y-4 pt-4">
+                  <ul className="space-y-3">
+                    {[
+                    { icon: CheckCircle, label: "Verified checkmark" },
+                    { icon: Sparkles, label: "Grok with increased limits" },
+                    { icon: Sparkles, label: "Tag @Grok to create images" },
+                    { icon: BarChart3, label: "Advanced analytics" },
+                    { icon: Star, label: "Less ads in your feeds" },
+                    { icon: MessageSquare, label: "Boosted replies" },
+                    { icon: Pen, label: "Write Articles" },
+                    { icon: DollarSign, label: "Get paid to post" },
+                    { icon: Users, label: "Creator Subscriptions" },
+                    { icon: Crown, label: "X Pro" }].
+                    map((feat, i) =>
+                    <li key={i} className="flex items-center gap-3 text-sm text-muted-foreground">
+                        <feat.icon className="w-4 h-4 text-primary flex-shrink-0" /> {feat.label}
+                      </li>
+                    )}
+                  </ul>
+                  <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block">
+                    <Button variant="outline" className="w-full mt-4 rounded-full border-primary/30 hover:bg-primary/10 hover:text-primary font-bold text-base py-5">
+                      Buy Now
+                    </Button>
+                  </a>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* 3 Months Plus Card */}
+            <motion.div variants={fadeUp} whileHover={scaleHover}>
+              <Card className="relative border-purple-500/30 bg-card/50 backdrop-blur-xl hover:border-purple-500/50 transition-all duration-300 h-full">
+                <CardHeader className="text-center pb-2">
+                  <CardTitle className="text-xl font-display text-purple-400">3 Months Plus</CardTitle>
+                  <div className="mt-4 flex items-baseline justify-center gap-2">
+                    <span className="text-lg text-muted-foreground line-through">$30</span>
+                    <span className="text-5xl font-bold font-display text-foreground">$9</span>
+                    <span className="text-sm text-muted-foreground">USDT</span>
+                  </div>
+                  <Badge className="mt-2 bg-purple-500/20 text-purple-300 border-purple-500/30 text-xs">Save 70%</Badge>
+                </CardHeader>
+                <CardContent className="space-y-4 pt-4">
+                  <ul className="space-y-3">
+                    {[
+                    { icon: CheckCircle, label: "Verified checkmark" },
+                    { icon: Sparkles, label: "Grok with increased limits" },
+                    { icon: Sparkles, label: "Tag @Grok to create images" },
+                    { icon: BarChart3, label: "Advanced analytics" },
+                    { icon: Star, label: "Less ads in your feeds" },
+                    { icon: MessageSquare, label: "Boosted replies" },
+                    { icon: Pen, label: "Write Articles" },
+                    { icon: DollarSign, label: "Get paid to post" },
+                    { icon: Users, label: "Creator Subscriptions" },
+                    { icon: Crown, label: "X Pro" }].
+                    map((feat, i) =>
+                    <li key={i} className="flex items-center gap-3 text-sm text-muted-foreground">
+                        <feat.icon className="w-4 h-4 text-purple-400 flex-shrink-0" /> {feat.label}
+                      </li>
+                    )}
+                  </ul>
+                  <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block">
+                    <Button variant="outline" className="w-full mt-4 rounded-full border-purple-500/30 hover:bg-purple-500/10 hover:text-purple-300 font-bold text-base py-5">
+                      Buy Now
+                    </Button>
+                  </a>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* 6 Months Plus Card */}
+            <motion.div variants={fadeUp} whileHover={scaleHover}>
+              <Card className="relative border-purple-500/30 bg-card/50 backdrop-blur-xl hover:border-purple-500/50 transition-all duration-300 h-full">
+                <CardHeader className="text-center pb-2">
+                  <CardTitle className="text-xl font-display text-purple-400">6 Months Plus</CardTitle>
+                  <div className="mt-4 flex items-baseline justify-center gap-2">
+                    <span className="text-lg text-muted-foreground line-through">$60</span>
+                    <span className="text-5xl font-bold font-display text-foreground">$15</span>
+                    <span className="text-sm text-muted-foreground">USDT</span>
+                  </div>
+                  <Badge className="mt-2 bg-purple-500/20 text-purple-300 border-purple-500/30 text-xs">Save 75%</Badge>
+                </CardHeader>
+                <CardContent className="space-y-4 pt-4">
+                  <ul className="space-y-3">
+                    {[
+                    { icon: CheckCircle, label: "Verified checkmark" },
+                    { icon: Sparkles, label: "Grok with increased limits" },
+                    { icon: Sparkles, label: "Tag @Grok to create images" },
+                    { icon: BarChart3, label: "Advanced analytics" },
+                    { icon: Star, label: "Less ads in your feeds" },
+                    { icon: MessageSquare, label: "Boosted replies" },
+                    { icon: Pen, label: "Write Articles" },
+                    { icon: DollarSign, label: "Get paid to post" },
+                    { icon: Users, label: "Creator Subscriptions" },
+                    { icon: Crown, label: "X Pro" }].
+                    map((feat, i) =>
+                    <li key={i} className="flex items-center gap-3 text-sm text-muted-foreground">
+                        <feat.icon className="w-4 h-4 text-purple-400 flex-shrink-0" /> {feat.label}
+                      </li>
+                    )}
+                  </ul>
+                  <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block">
+                    <Button variant="outline" className="w-full mt-4 rounded-full border-purple-500/30 hover:bg-purple-500/10 hover:text-purple-300 font-bold text-base py-5">
+                      Buy Now
+                    </Button>
+                  </a>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* 12 Months Plus Card */}
+            <motion.div variants={fadeUp} whileHover={scaleHover}>
+              <Card className="relative border-purple-500/30 bg-card/50 backdrop-blur-xl hover:border-purple-500/50 transition-all duration-300 h-full">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                  <Badge className="bg-gradient-to-r from-purple-500 to-purple-700 text-white border-0 px-4 py-1 text-xs font-semibold shadow-lg">
+                    <Sparkles className="w-3 h-3 mr-1" /> Best Value
+                  </Badge>
+                </div>
+                <CardHeader className="text-center pb-2 pt-8">
+                  <CardTitle className="text-xl font-display text-purple-400">12 Months Plus</CardTitle>
+                  <div className="mt-4 flex items-baseline justify-center gap-2">
+                    <span className="text-lg text-muted-foreground line-through">$120</span>
+                    <span className="text-5xl font-bold font-display text-purple-400">$20</span>
+                    <span className="text-sm text-muted-foreground">USDT</span>
+                  </div>
+                  <Badge className="mt-2 bg-purple-500/20 text-purple-300 border-purple-500/30 text-xs">Save 83%</Badge>
+                </CardHeader>
+                <CardContent className="space-y-4 pt-4">
+                  <ul className="space-y-3">
+                    {[
+                    { icon: CheckCircle, label: "Verified checkmark" },
+                    { icon: Sparkles, label: "Grok with increased limits" },
+                    { icon: Sparkles, label: "Tag @Grok to create images" },
+                    { icon: BarChart3, label: "Advanced analytics" },
+                    { icon: Star, label: "Less ads in your feeds" },
+                    { icon: MessageSquare, label: "Boosted replies" },
+                    { icon: Pen, label: "Write Articles" },
+                    { icon: DollarSign, label: "Get paid to post" },
+                    { icon: Users, label: "Creator Subscriptions" },
+                    { icon: Crown, label: "X Pro" }].
+                    map((feat, i) =>
+                    <li key={i} className="flex items-center gap-3 text-sm text-muted-foreground">
+                        <feat.icon className="w-4 h-4 text-purple-400 flex-shrink-0" /> {feat.label}
+                      </li>
+                    )}
+                  </ul>
+                  <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block">
+                    <Button className="w-full mt-4 rounded-full bg-gradient-to-r from-purple-500 to-purple-700 text-white shadow-[0_0_20px_hsl(270,60%,50%,0.2)] hover:shadow-[0_0_30px_hsl(270,60%,50%,0.4)] font-bold text-base py-5">
                       Buy Now
                     </Button>
                   </a>
