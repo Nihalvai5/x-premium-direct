@@ -87,7 +87,7 @@ const Index = () => {
   const [showFloatingCta, setShowFloatingCta] = useState(false);
   const [statsInView, setStatsInView] = useState(false);
 
-  const customersServed = useCounter(500, 2000, statsInView);
+  const customersServed = useCounter(20000, 2000, statsInView);
   const avgDeliveryTime = useCounter(30, 1500, statsInView);
   const satisfactionRate = useCounter(99, 2000, statsInView);
 
@@ -718,7 +718,7 @@ const Index = () => {
           onViewportEnter={() => setStatsInView(true)}
         >
           <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-bold font-display text-center mb-12">
-            Trusted by <span className="text-primary">Hundreds</span>
+            Trusted by <span className="text-primary">Thousands</span>
           </motion.h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
