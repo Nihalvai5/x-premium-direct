@@ -283,7 +283,7 @@ const Index = () => {
                 <CardHeader className="text-center pb-2">
                   <CardTitle className="text-xl font-display">3 Months</CardTitle>
                   <div className="mt-4 flex items-baseline justify-center gap-2">
-                    <span className="text-lg text-muted-foreground line-through">$18</span>
+                    <span className="text-lg text-muted-foreground line-through">$24</span>
                     <span className="text-5xl font-bold font-display text-foreground">$5</span>
                     <span className="text-sm text-muted-foreground">USDT</span>
                   </div>
@@ -328,7 +328,7 @@ const Index = () => {
                 <CardHeader className="text-center pb-2 pt-8">
                   <CardTitle className="text-xl font-display">6 Months</CardTitle>
                   <div className="mt-4 flex items-baseline justify-center gap-2">
-                    <span className="text-lg text-muted-foreground line-through">$36</span>
+                    <span className="text-lg text-muted-foreground line-through">$45</span>
                     <span className="text-5xl font-bold font-display text-primary">$8</span>
                     <span className="text-sm text-muted-foreground">USDT</span>
                   </div>
@@ -368,7 +368,7 @@ const Index = () => {
                 <CardHeader className="text-center pb-2">
                   <CardTitle className="text-xl font-display">12 Months</CardTitle>
                   <div className="mt-4 flex items-baseline justify-center gap-2">
-                    <span className="text-lg text-muted-foreground line-through">$72</span>
+                    <span className="text-lg text-muted-foreground line-through">$80</span>
                     <span className="text-5xl font-bold font-display text-foreground">$14</span>
                     <span className="text-sm text-muted-foreground">USDT</span>
                   </div>
@@ -408,7 +408,7 @@ const Index = () => {
                 <CardHeader className="text-center pb-2">
                   <CardTitle className="text-xl font-display text-purple-400">3 Months Plus</CardTitle>
                   <div className="mt-4 flex items-baseline justify-center gap-2">
-                    <span className="text-lg text-muted-foreground line-through">$30</span>
+                    <span className="text-lg text-muted-foreground line-through">$151</span>
                     <span className="text-5xl font-bold font-display text-foreground">$9</span>
                     <span className="text-sm text-muted-foreground">USDT</span>
                   </div>
@@ -448,7 +448,7 @@ const Index = () => {
                 <CardHeader className="text-center pb-2">
                   <CardTitle className="text-xl font-display text-purple-400">6 Months Plus</CardTitle>
                   <div className="mt-4 flex items-baseline justify-center gap-2">
-                    <span className="text-lg text-muted-foreground line-through">$60</span>
+                    <span className="text-lg text-muted-foreground line-through">$302</span>
                     <span className="text-5xl font-bold font-display text-foreground">$15</span>
                     <span className="text-sm text-muted-foreground">USDT</span>
                   </div>
@@ -493,7 +493,7 @@ const Index = () => {
                 <CardHeader className="text-center pb-2 pt-8">
                   <CardTitle className="text-xl font-display text-purple-400">12 Months Plus</CardTitle>
                   <div className="mt-4 flex items-baseline justify-center gap-2">
-                    <span className="text-lg text-muted-foreground line-through">$120</span>
+                    <span className="text-lg text-muted-foreground line-through">$407</span>
                     <span className="text-5xl font-bold font-display text-purple-400">$20</span>
                     <span className="text-sm text-muted-foreground">USDT</span>
                   </div>
