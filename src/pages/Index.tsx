@@ -200,11 +200,11 @@ const Index = () => {
                 {link.label}
               </button>
           )}
-            <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block mt-2">
+            <motion.a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" whileHover={ctaHover} whileTap={ctaTap} className="block mt-2">
               <Button size="sm" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
                 <Send className="w-3.5 h-3.5 mr-1.5" /> Order Now
               </Button>
-            </a>
+            </motion.a>
           </motion.div>
         }
       </header>
