@@ -689,21 +689,26 @@ const Index = () => {
           initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}
           variants={scaleUp}>
           
-          <div className="relative rounded-2xl overflow-hidden">
+          <motion.div
+            className="relative rounded-2xl overflow-hidden"
+            initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}
+            variants={staggerContainer}>
             <div className="absolute inset-0 bg-gradient-to-r from-secondary/20 via-accent/20 to-primary/20" />
             <div className="relative p-8 sm:p-12 text-center border border-primary/20 rounded-2xl backdrop-blur">
-              <Shield className="w-12 h-12 text-primary mx-auto mb-6 animate-float" />
-              <h3 className="text-2xl sm:text-3xl font-bold font-display mb-4">
+              <motion.div variants={scaleUp}>
+                <Shield className="w-12 h-12 text-primary mx-auto mb-6 animate-float" />
+              </motion.div>
+              <motion.h3 variants={fadeUp} className="text-2xl sm:text-3xl font-bold font-display mb-4">
                 100% Safe & Official
-              </h3>
-              <p className="text-muted-foreground max-w-xl mx-auto mb-3">
+              </motion.h3>
+              <motion.p variants={fadeUp} className="text-muted-foreground max-w-xl mx-auto mb-3">
                 This is provided directly by X as a gift — not through any website or third party.
-              </p>
-              <p className="text-muted-foreground max-w-xl mx-auto">
+              </motion.p>
+              <motion.p variants={fadeUp} className="text-muted-foreground max-w-xl mx-auto">
                 Everything is delivered via X's official system directly to your account. There is <span className="text-primary font-semibold">no risk</span> of any issues.
-              </p>
+              </motion.p>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
       </section>
 
