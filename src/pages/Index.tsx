@@ -48,6 +48,8 @@ const staggerFast = {
 };
 
 const scaleHover = { scale: 1.04, transition: { duration: 0.25, ease: "easeOut" as const } };
+const ctaHover = { scale: 1.05, transition: { type: "spring" as const, stiffness: 400, damping: 18 } };
+const ctaTap = { scale: 0.97 };
 
 const glowPulse = {
   animate: {
@@ -162,11 +164,11 @@ const Index = () => {
                 {link.label}
               </button>
             )}
-            <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer">
+            <motion.a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" whileHover={ctaHover} whileTap={ctaTap} className="inline-block">
               <Button size="sm" className="ml-2 bg-primary hover:bg-primary/90 text-primary-foreground">
                 <Send className="w-3.5 h-3.5 mr-1.5" /> Order Now
               </Button>
-            </a>
+            </motion.a>
           </nav>
 
           {/* Mobile Menu Toggle */}
@@ -198,11 +200,11 @@ const Index = () => {
                 {link.label}
               </button>
           )}
-            <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block mt-2">
+            <motion.a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" whileHover={ctaHover} whileTap={ctaTap} className="block mt-2">
               <Button size="sm" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
                 <Send className="w-3.5 h-3.5 mr-1.5" /> Order Now
               </Button>
-            </a>
+            </motion.a>
           </motion.div>
         }
       </header>
@@ -243,17 +245,12 @@ const Index = () => {
           </motion.p>
 
           <motion.div variants={scaleUp}>
-            <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer">
-              <motion.div
-                whileHover={{ scale: 1.08 }}
-                whileTap={{ scale: 0.96 }}
-                transition={{ type: "spring", stiffness: 400, damping: 15 }}>
-                <Button size="lg" className="text-lg px-8 py-6 rounded-full bg-gradient-to-r from-primary to-gold shadow-[0_0_30px_hsl(45,100%,55%,0.3)] hover:shadow-[0_0_50px_hsl(45,100%,55%,0.5)] transition-all duration-300">
-                  <Send className="w-5 h-5 mr-2" />
-                  Message on Telegram
-                </Button>
-              </motion.div>
-            </a>
+            <motion.a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" whileHover={ctaHover} whileTap={ctaTap} className="inline-block">
+              <Button size="lg" className="text-lg px-8 py-6 rounded-full bg-gradient-to-r from-primary to-gold shadow-[0_0_30px_hsl(45,100%,55%,0.3)] hover:shadow-[0_0_50px_hsl(45,100%,55%,0.5)] transition-all duration-300">
+                <Send className="w-5 h-5 mr-2" />
+                Message on Telegram
+              </Button>
+            </motion.a>
           </motion.div>
         </motion.div>
       </section>
@@ -308,11 +305,11 @@ const Index = () => {
                       </li>
                     )}
                   </ul>
-                  <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block">
+                  <motion.a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block" whileHover={ctaHover} whileTap={ctaTap}>
                     <Button variant="outline" className="w-full mt-4 rounded-full border-primary/30 hover:bg-primary/10 hover:text-primary font-bold text-base py-5">
                       Buy Now
                     </Button>
-                  </a>
+                  </motion.a>
                 </CardContent>
               </Card>
             </motion.div>
@@ -353,11 +350,11 @@ const Index = () => {
                       </li>
                     )}
                   </ul>
-                  <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block">
+                  <motion.a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block" whileHover={ctaHover} whileTap={ctaTap}>
                     <Button className="w-full mt-4 rounded-full bg-gradient-to-r from-primary to-gold text-primary-foreground shadow-[0_0_20px_hsl(45,100%,55%,0.2)] hover:shadow-[0_0_30px_hsl(45,100%,55%,0.4)] font-bold text-base py-5">
                       Buy Now
                     </Button>
-                  </a>
+                  </motion.a>
                 </CardContent>
               </Card>
             </motion.div>
@@ -393,11 +390,11 @@ const Index = () => {
                       </li>
                     )}
                   </ul>
-                  <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block">
+                  <motion.a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block" whileHover={ctaHover} whileTap={ctaTap}>
                     <Button variant="outline" className="w-full mt-4 rounded-full border-primary/30 hover:bg-primary/10 hover:text-primary font-bold text-base py-5">
                       Buy Now
                     </Button>
-                  </a>
+                  </motion.a>
                 </CardContent>
               </Card>
             </motion.div>
@@ -433,11 +430,11 @@ const Index = () => {
                       </li>
                     )}
                   </ul>
-                  <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block">
+                  <motion.a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block" whileHover={ctaHover} whileTap={ctaTap}>
                     <Button variant="outline" className="w-full mt-4 rounded-full border-purple-500/30 hover:bg-purple-500/10 hover:text-purple-300 font-bold text-base py-5">
                       Buy Now
                     </Button>
-                  </a>
+                  </motion.a>
                 </CardContent>
               </Card>
             </motion.div>
@@ -473,11 +470,11 @@ const Index = () => {
                       </li>
                     )}
                   </ul>
-                  <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block">
+                  <motion.a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block" whileHover={ctaHover} whileTap={ctaTap}>
                     <Button variant="outline" className="w-full mt-4 rounded-full border-purple-500/30 hover:bg-purple-500/10 hover:text-purple-300 font-bold text-base py-5">
                       Buy Now
                     </Button>
-                  </a>
+                  </motion.a>
                 </CardContent>
               </Card>
             </motion.div>
@@ -518,11 +515,11 @@ const Index = () => {
                       </li>
                     )}
                   </ul>
-                  <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block">
+                  <motion.a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block" whileHover={ctaHover} whileTap={ctaTap}>
                     <Button className="w-full mt-4 rounded-full bg-gradient-to-r from-purple-500 to-purple-700 text-white shadow-[0_0_20px_hsl(270,60%,50%,0.2)] hover:shadow-[0_0_30px_hsl(270,60%,50%,0.4)] font-bold text-base py-5">
                       Buy Now
                     </Button>
-                  </a>
+                  </motion.a>
                 </CardContent>
               </Card>
             </motion.div>
@@ -940,7 +937,7 @@ const Index = () => {
           initial="hidden" whileInView="visible" viewport={{ once: true }}
           variants={staggerContainer}>
           
-          <motion.a variants={scaleUp} whileHover={{ scale: 1.05 }} href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="inline-block">
+          <motion.a variants={scaleUp} whileHover={ctaHover} whileTap={ctaTap} href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="inline-block">
             <Button size="lg" className="rounded-full bg-gradient-to-r from-primary to-gold text-primary-foreground px-8 shadow-[0_0_30px_hsl(45,100%,55%,0.2)]">
               <MessageCircle className="w-5 h-5 mr-2" />
               Contact on Telegram
@@ -966,8 +963,8 @@ const Index = () => {
         initial={{ opacity: 0, y: 40, scale: 0.8 }}
         animate={showFloatingCta ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 40, scale: 0.8 }}
         transition={{ type: "spring", stiffness: 300, damping: 25 }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
+        whileHover={ctaHover}
+        whileTap={ctaTap}
         className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-primary-foreground font-bold shadow-lg pointer-events-auto"
         style={{ pointerEvents: showFloatingCta ? "auto" : "none" }}
       >
