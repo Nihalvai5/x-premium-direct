@@ -39,12 +39,22 @@ const rotateIn = {
 
 const staggerContainer = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.15 } }
+  visible: { transition: { staggerChildren: 0.15, delayChildren: 0.05 } }
 };
 
 const staggerFast = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.08 } }
+  visible: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } }
+};
+
+const pricingStagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } }
+};
+
+const pricingCard = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" as const } }
 };
 
 const scaleHover = { scale: 1.04, transition: { duration: 0.25, ease: "easeOut" as const } };
