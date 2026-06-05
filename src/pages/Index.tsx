@@ -310,11 +310,11 @@ const Index = () => {
                       </li>
                     )}
                   </ul>
-                  <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block">
+                  <motion.a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block" whileHover={ctaHover} whileTap={ctaTap}>
                     <Button variant="outline" className="w-full mt-4 rounded-full border-primary/30 hover:bg-primary/10 hover:text-primary font-bold text-base py-5">
                       Buy Now
                     </Button>
-                  </a>
+                  </motion.a>
                 </CardContent>
               </Card>
             </motion.div>
@@ -355,11 +355,11 @@ const Index = () => {
                       </li>
                     )}
                   </ul>
-                  <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block">
+                  <motion.a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block" whileHover={ctaHover} whileTap={ctaTap}>
                     <Button className="w-full mt-4 rounded-full bg-gradient-to-r from-primary to-gold text-primary-foreground shadow-[0_0_20px_hsl(45,100%,55%,0.2)] hover:shadow-[0_0_30px_hsl(45,100%,55%,0.4)] font-bold text-base py-5">
                       Buy Now
                     </Button>
-                  </a>
+                  </motion.a>
                 </CardContent>
               </Card>
             </motion.div>
@@ -395,11 +395,11 @@ const Index = () => {
                       </li>
                     )}
                   </ul>
-                  <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block">
+                  <motion.a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block" whileHover={ctaHover} whileTap={ctaTap}>
                     <Button variant="outline" className="w-full mt-4 rounded-full border-primary/30 hover:bg-primary/10 hover:text-primary font-bold text-base py-5">
                       Buy Now
                     </Button>
-                  </a>
+                  </motion.a>
                 </CardContent>
               </Card>
             </motion.div>
@@ -435,11 +435,11 @@ const Index = () => {
                       </li>
                     )}
                   </ul>
-                  <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block">
+                  <motion.a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block" whileHover={ctaHover} whileTap={ctaTap}>
                     <Button variant="outline" className="w-full mt-4 rounded-full border-purple-500/30 hover:bg-purple-500/10 hover:text-purple-300 font-bold text-base py-5">
                       Buy Now
                     </Button>
-                  </a>
+                  </motion.a>
                 </CardContent>
               </Card>
             </motion.div>
@@ -475,11 +475,11 @@ const Index = () => {
                       </li>
                     )}
                   </ul>
-                  <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block">
+                  <motion.a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block" whileHover={ctaHover} whileTap={ctaTap}>
                     <Button variant="outline" className="w-full mt-4 rounded-full border-purple-500/30 hover:bg-purple-500/10 hover:text-purple-300 font-bold text-base py-5">
                       Buy Now
                     </Button>
-                  </a>
+                  </motion.a>
                 </CardContent>
               </Card>
             </motion.div>
@@ -520,11 +520,11 @@ const Index = () => {
                       </li>
                     )}
                   </ul>
-                  <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block">
+                  <motion.a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block" whileHover={ctaHover} whileTap={ctaTap}>
                     <Button className="w-full mt-4 rounded-full bg-gradient-to-r from-purple-500 to-purple-700 text-white shadow-[0_0_20px_hsl(270,60%,50%,0.2)] hover:shadow-[0_0_30px_hsl(270,60%,50%,0.4)] font-bold text-base py-5">
                       Buy Now
                     </Button>
-                  </a>
+                  </motion.a>
                 </CardContent>
               </Card>
             </motion.div>
