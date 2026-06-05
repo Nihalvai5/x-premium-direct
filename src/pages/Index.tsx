@@ -48,6 +48,8 @@ const staggerFast = {
 };
 
 const scaleHover = { scale: 1.04, transition: { duration: 0.25, ease: "easeOut" as const } };
+const ctaHover = { scale: 1.05, transition: { type: "spring" as const, stiffness: 400, damping: 18 } };
+const ctaTap = { scale: 0.97 };
 
 const glowPulse = {
   animate: {
