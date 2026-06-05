@@ -245,17 +245,12 @@ const Index = () => {
           </motion.p>
 
           <motion.div variants={scaleUp}>
-            <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer">
-              <motion.div
-                whileHover={{ scale: 1.08 }}
-                whileTap={{ scale: 0.96 }}
-                transition={{ type: "spring", stiffness: 400, damping: 15 }}>
-                <Button size="lg" className="text-lg px-8 py-6 rounded-full bg-gradient-to-r from-primary to-gold shadow-[0_0_30px_hsl(45,100%,55%,0.3)] hover:shadow-[0_0_50px_hsl(45,100%,55%,0.5)] transition-all duration-300">
-                  <Send className="w-5 h-5 mr-2" />
-                  Message on Telegram
-                </Button>
-              </motion.div>
-            </a>
+            <motion.a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" whileHover={ctaHover} whileTap={ctaTap} className="inline-block">
+              <Button size="lg" className="text-lg px-8 py-6 rounded-full bg-gradient-to-r from-primary to-gold shadow-[0_0_30px_hsl(45,100%,55%,0.3)] hover:shadow-[0_0_50px_hsl(45,100%,55%,0.5)] transition-all duration-300">
+                <Send className="w-5 h-5 mr-2" />
+                Message on Telegram
+              </Button>
+            </motion.a>
           </motion.div>
         </motion.div>
       </section>
