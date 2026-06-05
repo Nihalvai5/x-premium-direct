@@ -39,12 +39,22 @@ const rotateIn = {
 
 const staggerContainer = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.15 } }
+  visible: { transition: { staggerChildren: 0.15, delayChildren: 0.05 } }
 };
 
 const staggerFast = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.08 } }
+  visible: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } }
+};
+
+const pricingStagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } }
+};
+
+const pricingCard = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" as const } }
 };
 
 const scaleHover = { scale: 1.04, transition: { duration: 0.25, ease: "easeOut" as const } };
@@ -271,11 +281,11 @@ const Index = () => {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={staggerContainer}>
+            viewport={{ once: true, amount: 0.05, margin: "0px 0px -10% 0px" }}
+            variants={pricingStagger}>
 
             {/* 3 Months Card */}
-            <motion.div variants={fadeUp} whileHover={scaleHover}>
+            <motion.div variants={pricingCard} whileHover={scaleHover}>
               <Card className="relative border-border/50 bg-card/50 backdrop-blur-xl hover:border-primary/30 transition-all duration-300 h-full">
                 <CardHeader className="text-center pb-2">
                   <CardTitle className="text-xl font-display">3 Months</CardTitle>
@@ -315,7 +325,7 @@ const Index = () => {
             </motion.div>
 
             {/* 6 Months Card */}
-            <motion.div variants={fadeUp} whileHover={scaleHover}>
+            <motion.div variants={pricingCard} whileHover={scaleHover}>
               <Card className="relative border-primary/40 bg-card/50 backdrop-blur-xl shadow-[0_0_40px_hsl(45,100%,55%,0.1)] hover:shadow-[0_0_60px_hsl(45,100%,55%,0.15)] transition-all duration-300 h-full">
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                   <Badge className="bg-gradient-to-r from-primary to-gold text-primary-foreground border-0 px-4 py-1 text-xs font-semibold shadow-lg">
@@ -360,7 +370,7 @@ const Index = () => {
             </motion.div>
 
             {/* 12 Months Card */}
-            <motion.div variants={fadeUp} whileHover={scaleHover}>
+            <motion.div variants={pricingCard} whileHover={scaleHover}>
               <Card className="relative border-border/50 bg-card/50 backdrop-blur-xl hover:border-primary/30 transition-all duration-300 h-full">
                 <CardHeader className="text-center pb-2">
                   <CardTitle className="text-xl font-display">12 Months</CardTitle>
@@ -400,7 +410,7 @@ const Index = () => {
             </motion.div>
 
             {/* 3 Months Plus Card */}
-            <motion.div variants={fadeUp} whileHover={scaleHover}>
+            <motion.div variants={pricingCard} whileHover={scaleHover}>
               <Card className="relative border-purple-500/30 bg-card/50 backdrop-blur-xl hover:border-purple-500/50 transition-all duration-300 h-full">
                 <CardHeader className="text-center pb-2">
                   <CardTitle className="text-xl font-display text-purple-400">3 Months Plus</CardTitle>
@@ -440,7 +450,7 @@ const Index = () => {
             </motion.div>
 
             {/* 6 Months Plus Card */}
-            <motion.div variants={fadeUp} whileHover={scaleHover}>
+            <motion.div variants={pricingCard} whileHover={scaleHover}>
               <Card className="relative border-purple-500/30 bg-card/50 backdrop-blur-xl hover:border-purple-500/50 transition-all duration-300 h-full">
                 <CardHeader className="text-center pb-2">
                   <CardTitle className="text-xl font-display text-purple-400">6 Months Plus</CardTitle>
@@ -480,7 +490,7 @@ const Index = () => {
             </motion.div>
 
             {/* 12 Months Plus Card */}
-            <motion.div variants={fadeUp} whileHover={scaleHover}>
+            <motion.div variants={pricingCard} whileHover={scaleHover}>
               <Card className="relative border-purple-500/30 bg-card/50 backdrop-blur-xl hover:border-purple-500/50 transition-all duration-300 h-full">
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                   <Badge className="bg-gradient-to-r from-purple-500 to-purple-700 text-white border-0 px-4 py-1 text-xs font-semibold shadow-lg">
