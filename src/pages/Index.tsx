@@ -281,8 +281,8 @@ const Index = () => {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={staggerContainer}>
+            viewport={{ once: true, amount: 0.05, margin: "0px 0px -10% 0px" }}
+            variants={pricingStagger}>
 
             {/* 3 Months Card */}
             <motion.div variants={fadeUp} whileHover={scaleHover}>
