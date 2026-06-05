@@ -938,23 +938,23 @@ const Index = () => {
         <motion.div
           className="max-w-4xl mx-auto text-center space-y-6"
           initial="hidden" whileInView="visible" viewport={{ once: true }}
-          variants={fadeUp}>
+          variants={staggerContainer}>
           
-          <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer">
-            <Button size="lg" className="rounded-full bg-gradient-to-r from-primary to-gold text-primary-foreground px-8 shadow-[0_0_30px_hsl(45,100%,55%,0.2)] hover:scale-105 transition-transform duration-300">
+          <motion.a variants={scaleUp} whileHover={{ scale: 1.05 }} href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="inline-block">
+            <Button size="lg" className="rounded-full bg-gradient-to-r from-primary to-gold text-primary-foreground px-8 shadow-[0_0_30px_hsl(45,100%,55%,0.2)]">
               <MessageCircle className="w-5 h-5 mr-2" />
               Contact on Telegram
             </Button>
-          </a>
+          </motion.a>
 
-          <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+          <motion.div variants={fadeUp} className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
             Available 24/7
-          </div>
+          </motion.div>
 
-          <p className="text-xs text-muted-foreground/60">
+          <motion.p variants={fadeUp} className="text-xs text-muted-foreground/60">
             X Premium Sales • Fast & Reliable Service
-          </p>
+          </motion.p>
         </motion.div>
       </footer>
 
