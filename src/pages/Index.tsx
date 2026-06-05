@@ -164,11 +164,11 @@ const Index = () => {
                 {link.label}
               </button>
             )}
-            <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer">
+            <motion.a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" whileHover={ctaHover} whileTap={ctaTap} className="inline-block">
               <Button size="sm" className="ml-2 bg-primary hover:bg-primary/90 text-primary-foreground">
                 <Send className="w-3.5 h-3.5 mr-1.5" /> Order Now
               </Button>
-            </a>
+            </motion.a>
           </nav>
 
           {/* Mobile Menu Toggle */}
