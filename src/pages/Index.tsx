@@ -937,7 +937,7 @@ const Index = () => {
           initial="hidden" whileInView="visible" viewport={{ once: true }}
           variants={staggerContainer}>
           
-          <motion.a variants={scaleUp} whileHover={{ scale: 1.05 }} href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="inline-block">
+          <motion.a variants={scaleUp} whileHover={ctaHover} whileTap={ctaTap} href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="inline-block">
             <Button size="lg" className="rounded-full bg-gradient-to-r from-primary to-gold text-primary-foreground px-8 shadow-[0_0_30px_hsl(45,100%,55%,0.2)]">
               <MessageCircle className="w-5 h-5 mr-2" />
               Contact on Telegram
