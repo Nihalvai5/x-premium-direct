@@ -299,16 +299,16 @@ const Index = () => {
                 <CardContent className="space-y-4 pt-4">
                   <ul className="space-y-3">
                     {[
-                    { icon: CheckCircle, label: "Verified checkmark" },
-                    { icon: Sparkles, label: "Grok with increased limits" },
+                    { icon: CheckCircle, label: "Blue checkmark badge" },
                     { icon: Sparkles, label: "Tag @Grok to create images" },
-                    { icon: BarChart3, label: "Advanced analytics" },
-                    { icon: Star, label: "50% ads" },
-                    { icon: MessageSquare, label: "Boosted replies" },
-                    { icon: Pen, label: "Write Articles" },
-                    { icon: DollarSign, label: "Get paid to post" },
-                    { icon: Users, label: "Creator Subscriptions" },
-                    { icon: Crown, label: "X Pro" }].
+                    { icon: Pen, label: "Edit posts within 1 hour" },
+                    { icon: MessageSquare, label: "Up to 25,000 characters" },
+                    { icon: Zap, label: "Up to 3 hours video (1080p)" },
+                    { icon: Star, label: "50% fewer ads in timelines" },
+                    { icon: ThumbsUp, label: "Standard reply boost" },
+                    { icon: Sparkles, label: "Standard Grok AI access" },
+                    { icon: DollarSign, label: "Ads Revenue Sharing" },
+                    { icon: Users, label: "Standard visibility boost" }].
                     map((feat, i) =>
                     <li key={i} className="flex items-center gap-3 text-sm text-muted-foreground">
                         <feat.icon className="w-4 h-4 text-primary flex-shrink-0" /> {feat.label}
@@ -344,16 +344,16 @@ const Index = () => {
                 <CardContent className="space-y-4 pt-4">
                   <ul className="space-y-3">
                     {[
-                    { icon: CheckCircle, label: "Verified checkmark" },
-                    { icon: Sparkles, label: "Grok with increased limits" },
+                    { icon: CheckCircle, label: "Blue checkmark badge" },
                     { icon: Sparkles, label: "Tag @Grok to create images" },
-                    { icon: BarChart3, label: "Advanced analytics" },
-                    { icon: Star, label: "50% ads" },
-                    { icon: MessageSquare, label: "Boosted replies" },
-                    { icon: Pen, label: "Write Articles" },
-                    { icon: DollarSign, label: "Get paid to post" },
-                    { icon: Users, label: "Creator Subscriptions" },
-                    { icon: Crown, label: "X Pro" }].
+                    { icon: Pen, label: "Edit posts within 1 hour" },
+                    { icon: MessageSquare, label: "Up to 25,000 characters" },
+                    { icon: Zap, label: "Up to 3 hours video (1080p)" },
+                    { icon: Star, label: "50% fewer ads in timelines" },
+                    { icon: ThumbsUp, label: "Standard reply boost" },
+                    { icon: Sparkles, label: "Standard Grok AI access" },
+                    { icon: DollarSign, label: "Ads Revenue Sharing" },
+                    { icon: Users, label: "Standard visibility boost" }].
                     map((feat, i) =>
                     <li key={i} className="flex items-center gap-3 text-sm text-muted-foreground">
                         <feat.icon className="w-4 h-4 text-primary flex-shrink-0" /> {feat.label}
@@ -384,16 +384,16 @@ const Index = () => {
                 <CardContent className="space-y-4 pt-4">
                   <ul className="space-y-3">
                     {[
-                    { icon: CheckCircle, label: "Verified checkmark" },
-                    { icon: Sparkles, label: "Grok with increased limits" },
+                    { icon: CheckCircle, label: "Blue checkmark badge" },
                     { icon: Sparkles, label: "Tag @Grok to create images" },
-                    { icon: BarChart3, label: "Advanced analytics" },
-                    { icon: Star, label: "50% ads" },
-                    { icon: MessageSquare, label: "Boosted replies" },
-                    { icon: Pen, label: "Write Articles" },
-                    { icon: DollarSign, label: "Get paid to post" },
-                    { icon: Users, label: "Creator Subscriptions" },
-                    { icon: Crown, label: "X Pro" }].
+                    { icon: Pen, label: "Edit posts within 1 hour" },
+                    { icon: MessageSquare, label: "Up to 25,000 characters" },
+                    { icon: Zap, label: "Up to 3 hours video (1080p)" },
+                    { icon: Star, label: "50% fewer ads in timelines" },
+                    { icon: ThumbsUp, label: "Standard reply boost" },
+                    { icon: Sparkles, label: "Standard Grok AI access" },
+                    { icon: DollarSign, label: "Ads Revenue Sharing" },
+                    { icon: Users, label: "Standard visibility boost" }].
                     map((feat, i) =>
                     <li key={i} className="flex items-center gap-3 text-sm text-muted-foreground">
                         <feat.icon className="w-4 h-4 text-primary flex-shrink-0" /> {feat.label}
@@ -424,16 +424,16 @@ const Index = () => {
                 <CardContent className="space-y-4 pt-4">
                   <ul className="space-y-3">
                     {[
-                    { icon: CheckCircle, label: "Verified checkmark" },
-                    { icon: Sparkles, label: "Grok with increased limits" },
-                    { icon: Sparkles, label: "Tag @Grok to create images" },
-                    { icon: BarChart3, label: "Advanced analytics" },
-                    { icon: Star, label: "50% ads" },
-                    { icon: MessageSquare, label: "Boosted replies" },
-                    { icon: Pen, label: "Write Articles" },
-                    { icon: DollarSign, label: "Get paid to post" },
-                    { icon: Users, label: "Creator Subscriptions" },
-                    { icon: Crown, label: "X Pro" }].
+                    { icon: CheckCircle, label: "Blue checkmark badge" },
+                    { icon: Crown, label: "All X Premium features included" },
+                    { icon: Sparkles, label: "SuperGrok full access" },
+                    { icon: Star, label: "100% ad-free timelines" },
+                    { icon: ThumbsUp, label: "Maximum reply boost" },
+                    { icon: Pen, label: "Write and format long-form Articles" },
+                    { icon: BarChart3, label: "X Radar real-time search filters" },
+                    { icon: Sparkles, label: "Highest limits for advanced Grok" },
+                    { icon: Shield, label: "Priority customer support" },
+                    { icon: Zap, label: "X Pro" }].
                     map((feat, i) =>
                     <li key={i} className="flex items-center gap-3 text-sm text-muted-foreground">
                         <feat.icon className="w-4 h-4 text-purple-400 flex-shrink-0" /> {feat.label}
@@ -464,16 +464,16 @@ const Index = () => {
                 <CardContent className="space-y-4 pt-4">
                   <ul className="space-y-3">
                     {[
-                    { icon: CheckCircle, label: "Verified checkmark" },
-                    { icon: Sparkles, label: "Grok with increased limits" },
-                    { icon: Sparkles, label: "Tag @Grok to create images" },
-                    { icon: BarChart3, label: "Advanced analytics" },
-                    { icon: Star, label: "50% ads" },
-                    { icon: MessageSquare, label: "Boosted replies" },
-                    { icon: Pen, label: "Write Articles" },
-                    { icon: DollarSign, label: "Get paid to post" },
-                    { icon: Users, label: "Creator Subscriptions" },
-                    { icon: Crown, label: "X Pro" }].
+                    { icon: CheckCircle, label: "Blue checkmark badge" },
+                    { icon: Crown, label: "All X Premium features included" },
+                    { icon: Sparkles, label: "SuperGrok full access" },
+                    { icon: Star, label: "100% ad-free timelines" },
+                    { icon: ThumbsUp, label: "Maximum reply boost" },
+                    { icon: Pen, label: "Write and format long-form Articles" },
+                    { icon: BarChart3, label: "X Radar real-time search filters" },
+                    { icon: Sparkles, label: "Highest limits for advanced Grok" },
+                    { icon: Shield, label: "Priority customer support" },
+                    { icon: Zap, label: "X Pro" }].
                     map((feat, i) =>
                     <li key={i} className="flex items-center gap-3 text-sm text-muted-foreground">
                         <feat.icon className="w-4 h-4 text-purple-400 flex-shrink-0" /> {feat.label}
@@ -509,16 +509,16 @@ const Index = () => {
                 <CardContent className="space-y-4 pt-4">
                   <ul className="space-y-3">
                     {[
-                    { icon: CheckCircle, label: "Verified checkmark" },
-                    { icon: Sparkles, label: "Grok with increased limits" },
-                    { icon: Sparkles, label: "Tag @Grok to create images" },
-                    { icon: BarChart3, label: "Advanced analytics" },
-                    { icon: Star, label: "50% ads" },
-                    { icon: MessageSquare, label: "Boosted replies" },
-                    { icon: Pen, label: "Write Articles" },
-                    { icon: DollarSign, label: "Get paid to post" },
-                    { icon: Users, label: "Creator Subscriptions" },
-                    { icon: Crown, label: "X Pro" }].
+                    { icon: CheckCircle, label: "Blue checkmark badge" },
+                    { icon: Crown, label: "All X Premium features included" },
+                    { icon: Sparkles, label: "SuperGrok full access" },
+                    { icon: Star, label: "100% ad-free timelines" },
+                    { icon: ThumbsUp, label: "Maximum reply boost" },
+                    { icon: Pen, label: "Write and format long-form Articles" },
+                    { icon: BarChart3, label: "X Radar real-time search filters" },
+                    { icon: Sparkles, label: "Highest limits for advanced Grok" },
+                    { icon: Shield, label: "Priority customer support" },
+                    { icon: Zap, label: "X Pro" }].
                     map((feat, i) =>
                     <li key={i} className="flex items-center gap-3 text-sm text-muted-foreground">
                         <feat.icon className="w-4 h-4 text-purple-400 flex-shrink-0" /> {feat.label}
