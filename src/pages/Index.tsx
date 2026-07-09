@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { BarChart3, Check, CheckCircle, Clock, Crown, DollarSign, ExternalLink, Globe, HelpCircle, Menu, MessageCircle, MessageSquare, Pen, Send, Shield, Sparkles, Star, ThumbsUp, Users, Wallet, X, Zap } from "lucide-react";
+import { Check, CheckCircle, Clock, Crown, DollarSign, ExternalLink, Globe, HelpCircle, Megaphone, Menu, MessageCircle, MessageSquare, Pen, Send, Shield, Sparkles, Star, ThumbsUp, Users, Wallet, X, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import binanceLogo from "@/assets/binance.png";
 import bybitLogo from "@/assets/bybit.png";
@@ -278,7 +278,7 @@ const Index = () => {
           </motion.div>
 
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.05, margin: "0px 0px -10% 0px" }}
@@ -369,169 +369,29 @@ const Index = () => {
               </Card>
             </motion.div>
 
-            {/* 12 Months Card */}
-            <motion.div variants={pricingCard} whileHover={scaleHover}>
-              <Card className="relative border-border/50 bg-card/50 backdrop-blur-xl hover:border-primary/30 transition-all duration-300 h-full">
-                <CardHeader className="text-center pb-2">
-                  <CardTitle className="text-xl font-display">12 Months</CardTitle>
-                  <div className="mt-4 flex items-baseline justify-center gap-2">
-                    <span className="text-lg text-muted-foreground line-through">$80</span>
-                    <span className="text-5xl font-bold font-display text-foreground">$14</span>
-                    <span className="text-sm text-muted-foreground">USDT</span>
-                  </div>
-                  <Badge className="mt-2 bg-primary/20 text-primary border-primary/30 text-xs">Save 81%</Badge>
-                </CardHeader>
-                <CardContent className="space-y-4 pt-4">
-                  <ul className="space-y-3">
-                    {[
-                    { icon: CheckCircle, label: "Blue checkmark badge" },
-                    { icon: Sparkles, label: "Tag @Grok to create images" },
-                    { icon: Pen, label: "Edit posts within 1 hour" },
-                    { icon: MessageSquare, label: "Up to 25,000 characters" },
-                    { icon: Zap, label: "Up to 3 hours video (1080p)" },
-                    { icon: Star, label: "50% fewer ads in timelines" },
-                    { icon: ThumbsUp, label: "Standard reply boost" },
-                    { icon: Sparkles, label: "Standard Grok AI access" },
-                    { icon: DollarSign, label: "Ads Revenue Sharing" },
-                    { icon: Users, label: "Standard visibility boost" }].
-                    map((feat, i) =>
-                    <li key={i} className="flex items-center gap-3 text-sm text-muted-foreground">
-                        <feat.icon className="w-4 h-4 text-primary flex-shrink-0" /> {feat.label}
-                      </li>
-                    )}
-                  </ul>
-                  <motion.a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block" whileHover={ctaHover} whileTap={ctaTap}>
-                    <Button variant="outline" className="w-full mt-4 rounded-full border-primary/30 hover:bg-primary/10 hover:text-primary font-bold text-base py-5">
-                      Buy Now
-                    </Button>
-                  </motion.a>
-                </CardContent>
-              </Card>
-            </motion.div>
+          </motion.div>
 
-            {/* 3 Months Plus Card */}
-            <motion.div variants={pricingCard} whileHover={scaleHover}>
-              <Card className="relative border-purple-500/30 bg-card/50 backdrop-blur-xl hover:border-purple-500/50 transition-all duration-300 h-full">
-                <CardHeader className="text-center pb-2">
-                  <CardTitle className="text-xl font-display text-purple-400">3 Months Plus</CardTitle>
-                  <div className="mt-4 flex items-baseline justify-center gap-2">
-                    <span className="text-lg text-muted-foreground line-through">$151</span>
-                    <span className="text-5xl font-bold font-display text-foreground">$9</span>
-                    <span className="text-sm text-muted-foreground">USDT</span>
-                  </div>
-                  <Badge className="mt-2 bg-purple-500/20 text-purple-300 border-purple-500/30 text-xs">Save 70%</Badge>
-                </CardHeader>
-                <CardContent className="space-y-4 pt-4">
-                  <ul className="space-y-3">
-                    {[
-                    { icon: CheckCircle, label: "Blue checkmark badge" },
-                    { icon: Crown, label: "All X Premium features included" },
-                    { icon: Sparkles, label: "SuperGrok full access" },
-                    { icon: Star, label: "100% ad-free timelines" },
-                    { icon: ThumbsUp, label: "Maximum reply boost" },
-                    { icon: Pen, label: "Write and format long-form Articles" },
-                    { icon: BarChart3, label: "X Radar real-time search filters" },
-                    { icon: Sparkles, label: "Highest limits for advanced Grok" },
-                    { icon: Shield, label: "Priority customer support" },
-                    { icon: Zap, label: "X Pro" }].
-                    map((feat, i) =>
-                    <li key={i} className="flex items-center gap-3 text-sm text-muted-foreground">
-                        <feat.icon className="w-4 h-4 text-purple-400 flex-shrink-0" /> {feat.label}
-                      </li>
-                    )}
-                  </ul>
-                  <motion.a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block" whileHover={ctaHover} whileTap={ctaTap}>
-                    <Button variant="outline" className="w-full mt-4 rounded-full border-purple-500/30 hover:bg-purple-500/10 hover:text-purple-300 font-bold text-base py-5">
-                      Buy Now
-                    </Button>
-                  </motion.a>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            {/* 6 Months Plus Card */}
-            <motion.div variants={pricingCard} whileHover={scaleHover}>
-              <Card className="relative border-purple-500/30 bg-card/50 backdrop-blur-xl hover:border-purple-500/50 transition-all duration-300 h-full">
-                <CardHeader className="text-center pb-2">
-                  <CardTitle className="text-xl font-display text-purple-400">6 Months Plus</CardTitle>
-                  <div className="mt-4 flex items-baseline justify-center gap-2">
-                    <span className="text-lg text-muted-foreground line-through">$302</span>
-                    <span className="text-5xl font-bold font-display text-foreground">$15</span>
-                    <span className="text-sm text-muted-foreground">USDT</span>
-                  </div>
-                  <Badge className="mt-2 bg-purple-500/20 text-purple-300 border-purple-500/30 text-xs">Save 75%</Badge>
-                </CardHeader>
-                <CardContent className="space-y-4 pt-4">
-                  <ul className="space-y-3">
-                    {[
-                    { icon: CheckCircle, label: "Blue checkmark badge" },
-                    { icon: Crown, label: "All X Premium features included" },
-                    { icon: Sparkles, label: "SuperGrok full access" },
-                    { icon: Star, label: "100% ad-free timelines" },
-                    { icon: ThumbsUp, label: "Maximum reply boost" },
-                    { icon: Pen, label: "Write and format long-form Articles" },
-                    { icon: BarChart3, label: "X Radar real-time search filters" },
-                    { icon: Sparkles, label: "Highest limits for advanced Grok" },
-                    { icon: Shield, label: "Priority customer support" },
-                    { icon: Zap, label: "X Pro" }].
-                    map((feat, i) =>
-                    <li key={i} className="flex items-center gap-3 text-sm text-muted-foreground">
-                        <feat.icon className="w-4 h-4 text-purple-400 flex-shrink-0" /> {feat.label}
-                      </li>
-                    )}
-                  </ul>
-                  <motion.a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block" whileHover={ctaHover} whileTap={ctaTap}>
-                    <Button variant="outline" className="w-full mt-4 rounded-full border-purple-500/30 hover:bg-purple-500/10 hover:text-purple-300 font-bold text-base py-5">
-                      Buy Now
-                    </Button>
-                  </motion.a>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            {/* 12 Months Plus Card */}
-            <motion.div variants={pricingCard} whileHover={scaleHover}>
-              <Card className="relative border-purple-500/30 bg-card/50 backdrop-blur-xl hover:border-purple-500/50 transition-all duration-300 h-full">
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <Badge className="bg-gradient-to-r from-purple-500 to-purple-700 text-white border-0 px-4 py-1 text-xs font-semibold shadow-lg">
-                    <Sparkles className="w-3 h-3 mr-1" /> Best Value
-                  </Badge>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="max-w-4xl mx-auto mt-8">
+            <motion.div variants={fadeUp} className="p-6 rounded-2xl bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-red-500/10 border border-amber-500/30 backdrop-blur-xl">
+              <div className="flex items-start gap-4">
+                <div className="p-3 rounded-full bg-amber-500/20 text-amber-400 shrink-0">
+                  <Megaphone className="w-6 h-6" />
                 </div>
-                <CardHeader className="text-center pb-2 pt-8">
-                  <CardTitle className="text-xl font-display text-purple-400">12 Months Plus</CardTitle>
-                  <div className="mt-4 flex items-baseline justify-center gap-2">
-                    <span className="text-lg text-muted-foreground line-through">$407</span>
-                    <span className="text-5xl font-bold font-display text-purple-400">$20</span>
-                    <span className="text-sm text-muted-foreground">USDT</span>
-                  </div>
-                  <Badge className="mt-2 bg-purple-500/20 text-purple-300 border-purple-500/30 text-xs">Save 83%</Badge>
-                </CardHeader>
-                <CardContent className="space-y-4 pt-4">
-                  <ul className="space-y-3">
-                    {[
-                    { icon: CheckCircle, label: "Blue checkmark badge" },
-                    { icon: Crown, label: "All X Premium features included" },
-                    { icon: Sparkles, label: "SuperGrok full access" },
-                    { icon: Star, label: "100% ad-free timelines" },
-                    { icon: ThumbsUp, label: "Maximum reply boost" },
-                    { icon: Pen, label: "Write and format long-form Articles" },
-                    { icon: BarChart3, label: "X Radar real-time search filters" },
-                    { icon: Sparkles, label: "Highest limits for advanced Grok" },
-                    { icon: Shield, label: "Priority customer support" },
-                    { icon: Zap, label: "X Pro" }].
-                    map((feat, i) =>
-                    <li key={i} className="flex items-center gap-3 text-sm text-muted-foreground">
-                        <feat.icon className="w-4 h-4 text-purple-400 flex-shrink-0" /> {feat.label}
-                      </li>
-                    )}
-                  </ul>
-                  <motion.a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="block" whileHover={ctaHover} whileTap={ctaTap}>
-                    <Button className="w-full mt-4 rounded-full bg-gradient-to-r from-purple-500 to-purple-700 text-white shadow-[0_0_20px_hsl(270,60%,50%,0.2)] hover:shadow-[0_0_30px_hsl(270,60%,50%,0.4)] font-bold text-base py-5">
-                      Buy Now
-                    </Button>
-                  </motion.a>
-                </CardContent>
-              </Card>
+                <div>
+                  <h3 className="text-lg font-bold font-display text-foreground mb-2">Premium+ Temporarily Offline</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    📢 Note: Premium+ is temporarily Off! Make sure to join and PIN our channel so you get notified the exact moment Premium+ is back online!{" "}
+                    <a href="https://t.me/Discount_Store0" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">
+                      https://t.me/Discount_Store0
+                    </a>
+                  </p>
+                </div>
+              </div>
             </motion.div>
           </motion.div>
 
