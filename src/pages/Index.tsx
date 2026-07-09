@@ -371,6 +371,30 @@ const Index = () => {
 
           </motion.div>
 
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="max-w-4xl mx-auto mt-8">
+            <motion.div variants={fadeUp} className="p-6 rounded-2xl bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-red-500/10 border border-amber-500/30 backdrop-blur-xl">
+              <div className="flex items-start gap-4">
+                <div className="p-3 rounded-full bg-amber-500/20 text-amber-400 shrink-0">
+                  <Megaphone className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold font-display text-foreground mb-2">Premium+ Temporarily Offline</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    📢 Note: Premium+ is temporarily Off! Make sure to join and PIN our channel so you get notified the exact moment Premium+ is back online!{" "}
+                    <a href="https://t.me/Discount_Store0" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">
+                      https://t.me/Discount_Store0
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
