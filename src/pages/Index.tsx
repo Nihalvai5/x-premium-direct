@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Check, CheckCircle, Clock, Crown, DollarSign, ExternalLink, Globe, HelpCircle, Megaphone, Menu, MessageCircle, MessageSquare, Pen, Send, Shield, Sparkles, Star, ThumbsUp, Users, Wallet, X, Zap } from "lucide-react";
+import { Check, CheckCircle, Clock, Crown, DollarSign, ExternalLink, Globe, HelpCircle, Lock, Megaphone, Menu, MessageCircle, MessageSquare, Pen, Send, Shield, Sparkles, Star, ThumbsUp, Users, Wallet, X, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import binanceLogo from "@/assets/binance.png";
 import bybitLogo from "@/assets/bybit.png";
@@ -11,6 +12,13 @@ import mexcLogo from "@/assets/mexc.png";
 import solanaLogo from "@/assets/solana.png";
 
 const TELEGRAM_LINK = "https://t.me/Nihalvai332?text=1️⃣%20My%20X%20profile%20link:%0A2️⃣%20Months:%206%20Months%0A3️⃣%20Payment:%20Wallet";
+
+const disabledPlans = [
+  { title: "12 Months", original: "$80", price: "$14", isPlus: false },
+  { title: "3 Months Plus", original: "$151", price: "$9", isPlus: true },
+  { title: "6 Months Plus", original: "$302", price: "$15", isPlus: true },
+  { title: "12 Months Plus", original: "$407", price: "$20", isPlus: true },
+];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
