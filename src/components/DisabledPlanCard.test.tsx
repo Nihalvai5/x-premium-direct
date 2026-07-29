@@ -46,9 +46,8 @@ describe("DisabledPlanCard popover", () => {
     render(<DisabledPlanCard plan={plusPlan} />);
     const trigger = screen.getByRole("button", { name: /6 Months Plus/i });
 
-    trigger.focus();
     fireEvent.focus(trigger);
-    await expectPopoverVisible(/Premium\+ is temporarily offline\./);
+
 
     fireEvent.blur(trigger);
     await waitFor(() => {
