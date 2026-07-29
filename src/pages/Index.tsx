@@ -392,13 +392,11 @@ const Index = () => {
             <motion.div
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
               variants={pricingStagger}>
-              {disabledPlans.map((plan) => {
-                const [open, setOpen] = [undefined, undefined]; // placeholder to keep diff readable
-                return (
+              {disabledPlans.map((plan) => (
                 <motion.div key={plan.title} variants={pricingCard}>
                   <DisabledPlanCard plan={plan} />
                 </motion.div>
-              );})}
+              ))}
             </motion.div>
           </motion.div>
 
