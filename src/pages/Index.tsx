@@ -392,44 +392,13 @@ const Index = () => {
             <motion.div
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
               variants={pricingStagger}>
-              {disabledPlans.map((plan) => (
+              {disabledPlans.map((plan) => {
+                const [open, setOpen] = [undefined, undefined]; // placeholder to keep diff readable
+                return (
                 <motion.div key={plan.title} variants={pricingCard}>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <div className="relative h-full">
-                        <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-                          <Badge className="bg-red-500/20 text-red-400 border-red-500/40 px-3 py-1 text-xs">
-                            <Lock className="w-3 h-3 mr-1" /> Temporarily Offline
-                          </Badge>
-                        </div>
-                        <Card className="relative border-border/30 bg-card/30 backdrop-blur-xl opacity-60 grayscale cursor-not-allowed h-full">
-                          <CardHeader className="text-center pb-2 pt-6">
-                            <CardTitle className="text-lg font-display text-muted-foreground">{plan.title}</CardTitle>
-                            <div className="mt-4 flex items-baseline justify-center gap-2">
-                              <span className="text-base text-muted-foreground line-through">{plan.original}</span>
-                              <span className="text-3xl font-bold font-display text-muted-foreground">{plan.price}</span>
-                              <span className="text-xs text-muted-foreground">USDT</span>
-                            </div>
-                          </CardHeader>
-                          <CardContent className="pt-2 pb-6">
-                            <Button disabled className="w-full rounded-full opacity-70 cursor-not-allowed">
-                              <Lock className="w-4 h-4 mr-2" /> Unavailable
-                            </Button>
-                          </CardContent>
-                        </Card>
-                      </div>
-                    </TooltipTrigger>
-                    <TooltipContent side="top" className="max-w-xs text-center">
-                      <p className="text-xs">
-                        {plan.isPlus ? "Premium+ is temporarily offline." : "This plan is temporarily unavailable."} Join and PIN our Telegram channel to be notified the moment it&apos;s back:{" "}
-                        <a href="https://t.me/Discount_Store0" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">
-                          t.me/Discount_Store0
-                        </a>
-                      </p>
-                    </TooltipContent>
-                  </Tooltip>
+                  <DisabledPlanCard plan={plan} />
                 </motion.div>
-              ))}
+              );})}
             </motion.div>
           </motion.div>
 
