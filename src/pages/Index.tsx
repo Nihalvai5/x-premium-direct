@@ -20,7 +20,7 @@ const disabledPlans = [
   { title: "12 Months Plus", original: "$407", price: "$20", isPlus: true },
 ];
 
-import { DisabledPlanCard } from "@/components/DisabledPlanCard";
+
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
