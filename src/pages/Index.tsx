@@ -299,7 +299,7 @@ const Index = () => {
 
             {/* 3 Months Card */}
             <motion.div variants={pricingCard} whileHover={scaleHover}>
-              <Card className="relative border-border/50 bg-card/50 backdrop-blur-xl hover:border-primary/30 transition-all duration-300 h-full">
+              <Card className="relative border-border/50 bg-card/50 backdrop-blur-xl hover:border-primary/30 transition-all duration-300 h-full hover-tilt overflow-hidden">
                 <CardHeader className="text-center pb-2">
                   <CardTitle className="text-xl font-display">3 Months</CardTitle>
                   <div className="mt-4 flex items-baseline justify-center gap-2">
@@ -339,7 +339,7 @@ const Index = () => {
 
             {/* 6 Months Card */}
             <motion.div variants={pricingCard} whileHover={scaleHover}>
-              <Card className="relative border-primary/40 bg-card/50 backdrop-blur-xl shadow-[0_0_40px_hsl(45,100%,55%,0.1)] hover:shadow-[0_0_60px_hsl(45,100%,55%,0.15)] transition-all duration-300 h-full">
+              <Card className="relative border-primary/40 bg-card/50 backdrop-blur-xl shadow-[0_0_40px_hsl(45,100%,55%,0.1)] hover:shadow-[0_0_60px_hsl(45,100%,55%,0.15)] transition-all duration-300 h-full hover-tilt overflow-hidden">
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                   <Badge className="bg-gradient-to-r from-primary to-gold text-primary-foreground border-0 px-4 py-1 text-xs font-semibold shadow-lg">
                     <Sparkles className="w-3 h-3 mr-1" /> Most Popular
