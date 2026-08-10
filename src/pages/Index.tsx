@@ -253,6 +253,7 @@ const Index = () => {
 
         <motion.div
           className="relative z-10 text-center max-w-4xl mx-auto"
+          style={{ y: heroY, opacity: heroOpacity, scale: heroScale }}
           initial="hidden"
           animate="visible"
           variants={staggerContainer}>
@@ -552,7 +553,7 @@ const Index = () => {
             { icon: "👉", text: "Don't change your X name, profile picture, or cover photo during the process, or your account may become ineligible." },
             { icon: "📌", text: "A 3-month subscription can only be taken once per cycle. You can subscribe again after the current one ends." }].
             map((note, i) =>
-            <motion.div key={i} variants={fadeUp} className="flex gap-4 p-5 rounded-xl bg-card/50 backdrop-blur border border-border/50">
+            <motion.div key={i} variants={i % 2 === 0 ? fadeLeft : fadeRight} className="flex gap-4 p-5 rounded-xl bg-card/50 backdrop-blur border border-border/50">
                 <span className="text-xl flex-shrink-0">{note.icon}</span>
                 <p className="text-sm text-muted-foreground leading-relaxed">{note.text}</p>
               </motion.div>
@@ -850,22 +851,22 @@ const Index = () => {
       <footer className="py-12 px-4 border-t border-border/50">
         <motion.div
           className="max-w-4xl mx-auto text-center space-y-6"
-          initial="hidden" whileInView="visible" viewport={{ once: true }}
+          initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.4 }}
           variants={staggerContainer}>
           
-          <motion.a variants={scaleUp} whileHover={ctaHover} whileTap={ctaTap} href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="inline-block">
+          <motion.a variants={blurUp} whileHover={ctaHover} whileTap={ctaTap} href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="inline-block">
             <Button size="lg" className="rounded-full bg-gradient-to-r from-primary to-gold text-primary-foreground px-8 shadow-[0_0_30px_hsl(45,100%,55%,0.2)]">
               <MessageCircle className="w-5 h-5 mr-2" />
               Contact on Telegram
             </Button>
           </motion.a>
 
-          <motion.div variants={fadeUp} className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+          <motion.div variants={blurUp} className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
             Available 24/7
           </motion.div>
 
-          <motion.p variants={fadeUp} className="text-xs text-muted-foreground/60">
+          <motion.p variants={blurUp} className="text-xs text-muted-foreground/60">
             X Premium Sales • Fast & Reliable Service
           </motion.p>
         </motion.div>
