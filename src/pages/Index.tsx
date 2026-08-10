@@ -206,7 +206,9 @@ const Index = () => {
                 <Send className="w-3.5 h-3.5 mr-1.5" /> Order Now
               </Button>
             </motion.a>
+            <ThemeToggle className="ml-1" />
           </nav>
+
 
           {/* Mobile actions */}
           <div className="flex items-center gap-1 sm:hidden">
