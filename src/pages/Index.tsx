@@ -6,7 +6,7 @@ import { DisabledPlanCard } from "@/components/DisabledPlanCard";
 import { ScrollProgressBar, AmbientBackground } from "@/components/PageFX";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Check, CheckCircle, Clock, Crown, DollarSign, ExternalLink, Globe, HelpCircle, Lock, Megaphone, Menu, MessageCircle, MessageSquare, Pen, Send, Shield, Sparkles, Star, ThumbsUp, Users, Wallet, X, Zap } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import binanceLogo from "@/assets/binance.png";
 import bybitLogo from "@/assets/bybit.png";
 import mexcLogo from "@/assets/mexc.png";
@@ -26,6 +26,12 @@ const disabledPlans = [
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } }
+};
+
+/** Soft blur + lift reveal used for scroll-triggered content */
+const blurUp = {
+  hidden: { opacity: 0, y: 40, filter: "blur(10px)" },
+  visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const } }
 };
 
 const fadeLeft = {
@@ -109,6 +115,12 @@ const Index = () => {
   const [activeSection, setActiveSection] = useState("");
   const [showFloatingCta, setShowFloatingCta] = useState(false);
   const [statsInView, setStatsInView] = useState(false);
+
+  // Hero parallax: content drifts up and fades as the user scrolls away
+  const { scrollY } = useScroll();
+  const heroY = useTransform(scrollY, [0, 500], [0, 80]);
+  const heroOpacity = useTransform(scrollY, [0, 420], [1, 0]);
+  const heroScale = useTransform(scrollY, [0, 500], [1, 0.96]);
 
   const customersServed = useCounter(20000, 2000, statsInView);
   const avgDeliveryTime = useCounter(30, 1500, statsInView);
