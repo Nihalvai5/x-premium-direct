@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { ThemeToggle } from "@/components/ThemeToggle";
+
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -204,15 +206,21 @@ const Index = () => {
                 <Send className="w-3.5 h-3.5 mr-1.5" /> Order Now
               </Button>
             </motion.a>
+            <ThemeToggle className="ml-1" />
           </nav>
 
-          {/* Mobile Menu Toggle */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="sm:hidden p-2 text-muted-foreground hover:text-foreground transition-colors">
-            
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
+
+          {/* Mobile actions */}
+          <div className="flex items-center gap-1 sm:hidden">
+            <ThemeToggle />
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 text-muted-foreground hover:text-foreground transition-colors">
+
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
+
         </div>
 
         {/* Mobile Menu */}
