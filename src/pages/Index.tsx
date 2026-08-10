@@ -6,7 +6,7 @@ import { DisabledPlanCard } from "@/components/DisabledPlanCard";
 import { ScrollProgressBar, AmbientBackground } from "@/components/PageFX";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Check, CheckCircle, Clock, Crown, DollarSign, ExternalLink, Globe, HelpCircle, Lock, Megaphone, Menu, MessageCircle, MessageSquare, Pen, Send, Shield, Sparkles, Star, ThumbsUp, Users, Wallet, X, Zap } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import binanceLogo from "@/assets/binance.png";
 import bybitLogo from "@/assets/bybit.png";
 import mexcLogo from "@/assets/mexc.png";
@@ -26,6 +26,12 @@ const disabledPlans = [
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } }
+};
+
+/** Soft blur + lift reveal used for scroll-triggered content */
+const blurUp = {
+  hidden: { opacity: 0, y: 40, filter: "blur(10px)" },
+  visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const } }
 };
 
 const fadeLeft = {
@@ -109,6 +115,12 @@ const Index = () => {
   const [activeSection, setActiveSection] = useState("");
   const [showFloatingCta, setShowFloatingCta] = useState(false);
   const [statsInView, setStatsInView] = useState(false);
+
+  // Hero parallax: content drifts up and fades as the user scrolls away
+  const { scrollY } = useScroll();
+  const heroY = useTransform(scrollY, [0, 500], [0, 80]);
+  const heroOpacity = useTransform(scrollY, [0, 420], [1, 0]);
+  const heroScale = useTransform(scrollY, [0, 500], [1, 0.96]);
 
   const customersServed = useCounter(20000, 2000, statsInView);
   const avgDeliveryTime = useCounter(30, 1500, statsInView);
@@ -241,6 +253,7 @@ const Index = () => {
 
         <motion.div
           className="relative z-10 text-center max-w-4xl mx-auto"
+          style={{ y: heroY, opacity: heroOpacity, scale: heroScale }}
           initial="hidden"
           animate="visible"
           variants={staggerContainer}>
@@ -540,7 +553,7 @@ const Index = () => {
             { icon: "👉", text: "Don't change your X name, profile picture, or cover photo during the process, or your account may become ineligible." },
             { icon: "📌", text: "A 3-month subscription can only be taken once per cycle. You can subscribe again after the current one ends." }].
             map((note, i) =>
-            <motion.div key={i} variants={fadeUp} className="flex gap-4 p-5 rounded-xl bg-card/50 backdrop-blur border border-border/50">
+            <motion.div key={i} variants={i % 2 === 0 ? fadeLeft : fadeRight} className="flex gap-4 p-5 rounded-xl bg-card/50 backdrop-blur border border-border/50">
                 <span className="text-xl flex-shrink-0">{note.icon}</span>
                 <p className="text-sm text-muted-foreground leading-relaxed">{note.text}</p>
               </motion.div>
@@ -838,22 +851,22 @@ const Index = () => {
       <footer className="py-12 px-4 border-t border-border/50">
         <motion.div
           className="max-w-4xl mx-auto text-center space-y-6"
-          initial="hidden" whileInView="visible" viewport={{ once: true }}
+          initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.4 }}
           variants={staggerContainer}>
           
-          <motion.a variants={scaleUp} whileHover={ctaHover} whileTap={ctaTap} href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="inline-block">
+          <motion.a variants={blurUp} whileHover={ctaHover} whileTap={ctaTap} href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="inline-block">
             <Button size="lg" className="rounded-full bg-gradient-to-r from-primary to-gold text-primary-foreground px-8 shadow-[0_0_30px_hsl(45,100%,55%,0.2)]">
               <MessageCircle className="w-5 h-5 mr-2" />
               Contact on Telegram
             </Button>
           </motion.a>
 
-          <motion.div variants={fadeUp} className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+          <motion.div variants={blurUp} className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
             Available 24/7
           </motion.div>
 
-          <motion.p variants={fadeUp} className="text-xs text-muted-foreground/60">
+          <motion.p variants={blurUp} className="text-xs text-muted-foreground/60">
             X Premium Sales • Fast & Reliable Service
           </motion.p>
         </motion.div>
