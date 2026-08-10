@@ -122,7 +122,7 @@ const Index = () => {
   const heroOpacity = useTransform(scrollY, [0, 420], [1, 0]);
   const heroScale = useTransform(scrollY, [0, 500], [1, 0.96]);
 
-  const customersServed = useCounter(20000, 2000, statsInView);
+  const customersServed = useCounter(50000, 3000, statsInView);
   const avgDeliveryTime = useCounter(30, 1500, statsInView);
   const satisfactionRate = useCounter(99, 2000, statsInView);
 
