@@ -206,13 +206,17 @@ const Index = () => {
             </motion.a>
           </nav>
 
-          {/* Mobile Menu Toggle */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="sm:hidden p-2 text-muted-foreground hover:text-foreground transition-colors">
-            
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
+          {/* Mobile actions */}
+          <div className="flex items-center gap-1 sm:hidden">
+            <ThemeToggle />
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 text-muted-foreground hover:text-foreground transition-colors">
+
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
+
         </div>
 
         {/* Mobile Menu */}
