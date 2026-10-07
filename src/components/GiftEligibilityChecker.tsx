@@ -27,11 +27,23 @@ function normalizeHandle(raw: string): string {
   return value.replace(/^@/, "");
 }
 
-export function GiftEligibilityChecker({ telegramLink }: { telegramLink: string }) {
+export function GiftEligibilityChecker() {
   const [handle, setHandle] = useState("");
   const [state, setState] = useState<UiState>({ kind: "idle" });
   const abortRef = useRef<AbortController | null>(null);
   const reqIdRef = useRef(0);
+
+  // Pre-filled Telegram order message; the checked account's profile link
+  // is inserted into field 1 so the user doesn't have to type it.
+  const buildTelegramLink = (username: string) => {
+    const h = normalizeHandle(username);
+    const message =
+      `1%EF%B8%8F%E2%83%A3%20My%20X%20profile%20link:%20https://x.com/${encodeURIComponent(h)}` +
+      `%0A2%EF%B8%8F%E2%83%A3%20Months:%206%20Months` +
+      `%0A3%EF%B8%8F%E2%83%A3%20Payment:%20Wallet`;
+    return `https://t.me/Nihalvai332?text=${message}`;
+  };
+
 
   useEffect(() => {
     const query = normalizeHandle(handle);
