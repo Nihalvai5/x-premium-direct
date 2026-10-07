@@ -302,7 +302,8 @@ const Index = () => {
 
       {/* Gift Eligibility Checker */}
       <section id="eligibility-check" className="relative py-16 px-4">
-        <GiftEligibilityChecker telegramLink={TELEGRAM_LINK} />
+        <GiftEligibilityChecker />
+
       </section>
 
       {/* Pricing Section */}
