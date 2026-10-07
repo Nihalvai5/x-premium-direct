@@ -299,6 +299,11 @@ const Index = () => {
         </motion.div>
       </section>
 
+      {/* Gift Eligibility Checker */}
+      <section id="eligibility-check" className="relative py-16 px-4">
+        <GiftEligibilityChecker telegramLink={TELEGRAM_LINK} />
+      </section>
+
       {/* Pricing Section */}
       <section id="pricing" className="relative py-20 px-4">
         <div className="max-w-6xl mx-auto">
