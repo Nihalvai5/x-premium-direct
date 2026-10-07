@@ -19,6 +19,13 @@ type UiState =
 
 const API_BASE = "https://d3al.xyz/api/gift-eligibility";
 
+// Shown in red whenever the checker says an account can't receive a gift right now.
+const NOT_ELIGIBLE_LINES = [
+  "1️⃣ If the account is already verified on X, this will not work. After the verification period ends, you can cancel the subscription and try again - please wait until then.",
+  "2️⃣ If you change your X name, profile, password, device login, profile & cover edits within 72 hours before ordering, your account may become not eligible - so it’s better not to make any changes.",
+  "👉 Note: If your account is not eligible, message me again after 1–3 days; it should become eligible.",
+];
+
 function normalizeHandle(raw: string): string {
   const value = raw.trim();
   // Accept a full profile URL and reduce it to the username
@@ -168,8 +175,25 @@ export function GiftEligibilityChecker() {
               <div className="flex items-start gap-2">
                 <Icon className={`w-5 h-5 mt-0.5 shrink-0 ${state.kind === "loading" ? "animate-spin" : ""}`} />
                 <div className="space-y-2">
-                  <p className="font-medium leading-snug">{result.message}</p>
-                  {result.tip && <p className="opacity-80 leading-snug">{result.tip}</p>}
+                  {tone === "ineligible" ? (
+                    <>
+                      <p className="font-semibold leading-snug text-red-600 dark:text-red-400">
+                        (Your account is not eligible)
+                      </p>
+                      <div className="space-y-2">
+                        {NOT_ELIGIBLE_LINES.map((line) => (
+                          <p key={line} className="leading-snug text-red-600 dark:text-red-400">
+                            {line}
+                          </p>
+                        ))}
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <p className="font-medium leading-snug">{result.message}</p>
+                      {result.tip && <p className="opacity-80 leading-snug">{result.tip}</p>}
+                    </>
+                  )}
                   {tone === "eligible" && (
                     <motion.a
                       href={buildTelegramLink(handle)}
