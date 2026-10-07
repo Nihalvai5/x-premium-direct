@@ -2,6 +2,58 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { AlertTriangle, CheckCircle2, Loader2, Send, ShieldCheck, XCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { supabase } from "@/integrations/supabase/client";
+
+function IneligibleSubmitForm({ handle }: { handle: string }) {
+  const [contact, setContact] = useState("");
+  const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
+
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const value = contact.trim();
+    if (value.length < 2 || value.length > 100) return;
+    setStatus("sending");
+    const { error } = await supabase.functions.invoke("submit-ineligible", {
+      body: { xHandle: handle, contact: value },
+    });
+    setStatus(error ? "error" : "done");
+  };
+
+  if (status === "done") {
+    return (
+      <div className="mt-3 rounded-lg border border-emerald-500/40 bg-emerald-500/10 px-3 py-2 text-emerald-600 dark:text-emerald-400">
+        ✅ Submitted! We’ll check your account and message you on Telegram soon.
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={submit} className="mt-3 space-y-2 rounded-lg border bg-background/60 p-3 text-foreground">
+      <p className="text-sm font-medium">
+        Submit your Telegram username or phone number — we’ll check your account and contact you when it’s eligible.
+      </p>
+      <div className="flex flex-col sm:flex-row gap-2">
+        <input
+          type="text"
+          value={contact}
+          onChange={(e) => setContact(e.target.value)}
+          maxLength={100}
+          required
+          placeholder="@telegram_username or +8801XXXXXXXXX"
+          aria-label="Telegram username or phone number"
+          className="flex-1 rounded-full border bg-background px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-primary/60"
+        />
+        <Button type="submit" size="sm" disabled={status === "sending"} className="rounded-full">
+          {status === "sending" ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Send className="w-4 h-4 mr-2" />}
+          Submit
+        </Button>
+      </div>
+      {status === "error" && (
+        <p className="text-xs text-red-600 dark:text-red-400">Couldn’t submit. Please try again or message us on Telegram.</p>
+      )}
+    </form>
+  );
+}
 
 type Result = {
   giftEligible: boolean;
@@ -187,7 +239,9 @@ export function GiftEligibilityChecker() {
                           </p>
                         ))}
                       </div>
+                      <IneligibleSubmitForm handle={normalizeHandle(handle)} />
                     </>
+
                   ) : (
                     <>
                       <p className="font-medium leading-snug">{result.message}</p>
