@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { DisabledPlanCard } from "@/components/DisabledPlanCard";
+import { GiftEligibilityChecker } from "@/components/GiftEligibilityChecker";
 import { ScrollProgressBar, AmbientBackground } from "@/components/PageFX";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Check, CheckCircle, Clock, Crown, DollarSign, ExternalLink, Globe, HelpCircle, Lock, Megaphone, Menu, MessageCircle, MessageSquare, Pen, Send, Shield, Sparkles, Star, ThumbsUp, Users, Wallet, X, Zap } from "lucide-react";
@@ -297,6 +298,11 @@ const Index = () => {
             </motion.a>
           </motion.div>
         </motion.div>
+      </section>
+
+      {/* Gift Eligibility Checker */}
+      <section id="eligibility-check" className="relative py-16 px-4">
+        <GiftEligibilityChecker telegramLink={TELEGRAM_LINK} />
       </section>
 
       {/* Pricing Section */}
