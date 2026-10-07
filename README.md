@@ -1,73 +1,48 @@
-# Welcome to your Lovable project
+# X Premium 
 
-## Project info
+I want to sell X Premium. The website will only have the information—like the price and what to do to get a subscription.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+If an account is not eligible for a subscription, what needs to be done? Also, to get X Premium, you need to message me on Telegram. We are available 24/7 to sell X Premium.
 
-## How can I edit this code?
+I’m providing some information below..  Please provide the following:
 
-There are several ways of editing your application.
+1️⃣ Your X profile link
 
-**Use Lovable**
+2️⃣ 3 months or 6 months
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+ (6 months recommended - limited offer)
 
-Changes made via Lovable will be committed automatically to this repo.
+3️⃣ Payment method: Wallet or Exchange                        1️⃣ If the account is already verified on X, this will not work. After the verification period ends, you can cancel the subscription and try again - please wait until then.
 
-**Use your preferred IDE**
+2️⃣ If your account is not eligible, message me again after 1–3 days; it should become eligible.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+👉 Note: If you change your X name, profile, or cover photo now, your account may become not eligible - so it’s better not to make any changes.            📌 This is provided directly by X as a gift, not through any website or third party. Everything is delivered via X’s official system directly to your account.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Therefore, there is no risk of any issues when taking X Premium through this process.    ✅ 3 months = $5
 
-Follow these steps:
+✅ 6 months = $8
+
+📌Note: If you take a 3-month premium subscription once, you won’t be able to take another 3-month subscription again. You can take the subscription again only when your current subscription ends.
+
+This project was built with [Lovable](https://lovable.dev).
+
+**Live app**: https://x-premium-direct.lovable.app
+
+## Build with Lovable
+
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/55b49786-b956-4ddc-ba96-8381998d5447).
+
+- **Ship faster**: describe what you want to build and Lovable handles the code.
+- **Stay in sync**: every change made in Lovable is committed straight to this repository.
+- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+
+## Development
+
+Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
+git clone <this-repository-url>
+cd <repository-name>
 npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
 npm run dev
 ```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
