@@ -172,7 +172,7 @@ export function GiftEligibilityChecker() {
                   {result.tip && <p className="opacity-80 leading-snug">{result.tip}</p>}
                   {tone === "eligible" && (
                     <motion.a
-                      href={telegramLink}
+                      href={buildTelegramLink(handle)}
                       target="_blank"
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.03 }}
