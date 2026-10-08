@@ -1,5 +1,6 @@
 import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
 import { z } from "npm:zod@3";
+import { createClient } from "npm:@supabase/supabase-js@2";
 
 const GATEWAY_URL = "https://connector-gateway.lovable.dev/google_sheets/v4";
 const SHEET_ID = "1kU-7S_Er5mc5BRsPEme9FXhWVdGzrNqXCyk-ScyHxH8";
@@ -23,9 +24,17 @@ Deno.serve(async (req) => {
     if (!parsed.success) return json({ error: "Invalid input" }, 400);
     const { xHandle, contact, status } = parsed.data;
 
+    // Save to the database first (powers the admin panel)
+    const db = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);
+    const { error: dbError } = await db.from("submissions").insert({ x_handle: xHandle, contact });
+    if (dbError) {
+      console.error("DB insert failed", dbError);
+      return json({ error: "Could not save" }, 500);
+    }
+
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     const SHEETS_KEY = Deno.env.get("GOOGLE_SHEETS_API_KEY");
-    if (!LOVABLE_API_KEY || !SHEETS_KEY) return json({ error: "Server not configured" }, 500);
+    if (!LOVABLE_API_KEY || !SHEETS_KEY) return json({ ok: true, sheet: false });
 
     // Prefix with ' so Sheets never treats user text as a formula
     const safe = (s: string) => (/^[=+\-@]/.test(s) ? `'${s}` : s);
@@ -51,7 +60,7 @@ Deno.serve(async (req) => {
     if (!res.ok) {
       const details = await res.text();
       console.error(`Sheets append failed [${res.status}]: ${details}`);
-      return json({ error: "Could not save", status: res.status, details }, 502);
+      return json({ ok: true, sheet: false });
     }
     return json({ ok: true });
   } catch (e) {
