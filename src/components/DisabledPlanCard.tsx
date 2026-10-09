@@ -39,7 +39,7 @@ export function DisabledPlanCard({ plan }: { plan: DisabledPlan }) {
               <Lock className="w-3 h-3 mr-1" /> Temporarily Offline
             </Badge>
           </div>
-          <Card className="relative border-border/30 bg-card/30 backdrop-blur-xl opacity-60 grayscale cursor-not-allowed h-full">
+          <Card className="relative border-border/30 bg-card/60 opacity-60 grayscale cursor-not-allowed h-full">
             <CardHeader className="text-center pb-2 pt-6">
               <CardTitle className="text-lg font-display text-muted-foreground">{plan.title}</CardTitle>
               <div className="mt-4 flex items-baseline justify-center gap-2">
