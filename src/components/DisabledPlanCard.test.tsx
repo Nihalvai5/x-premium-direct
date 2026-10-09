@@ -12,6 +12,18 @@ beforeAll(() => {
       scrollIntoView: () => {},
     });
   }
+  // jsdom lacks matchMedia; stub it as a desktop (hover-capable) pointer.
+  window.matchMedia = (query: string) =>
+    ({
+      matches: true,
+      media: query,
+      addEventListener: () => {},
+      removeEventListener: () => {},
+      addListener: () => {},
+      removeListener: () => {},
+      onchange: null,
+      dispatchEvent: () => false,
+    }) as MediaQueryList;
 });
 
 const plusPlan = { title: "6 Months Plus", original: "$302", price: "$15", isPlus: true };

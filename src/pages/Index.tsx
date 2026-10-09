@@ -329,7 +329,7 @@ const Index = () => {
 
             {/* 3 Months Card */}
             <motion.div variants={pricingCard} whileHover={scaleHover}>
-              <Card className="relative border-border/50 bg-card/50 backdrop-blur-xl hover:border-primary/30 transition-all duration-300 h-full hover-tilt overflow-hidden">
+              <Card className="relative border-border/50 bg-card/80 hover:border-primary/30 transition-all duration-300 h-full hover-tilt overflow-hidden">
                 <CardHeader className="text-center pb-2">
                   <CardTitle className="text-xl font-display">3 Months</CardTitle>
                   <div className="mt-4 flex items-baseline justify-center gap-2">
@@ -369,7 +369,7 @@ const Index = () => {
 
             {/* 6 Months Card */}
             <motion.div variants={pricingCard} whileHover={scaleHover}>
-              <Card className="relative border-primary/40 bg-card/50 backdrop-blur-xl shadow-[0_0_40px_hsl(45,100%,55%,0.1)] hover:shadow-[0_0_60px_hsl(45,100%,55%,0.15)] transition-all duration-300 h-full hover-tilt overflow-hidden">
+              <Card className="relative border-primary/40 bg-card/80 shadow-[0_0_40px_hsl(45,100%,55%,0.1)] hover:shadow-[0_0_60px_hsl(45,100%,55%,0.15)] transition-all duration-300 h-full hover-tilt overflow-hidden">
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                   <Badge className="bg-gradient-to-r from-primary to-gold text-primary-foreground border-0 px-4 py-1 text-xs font-semibold shadow-lg">
                     <Sparkles className="w-3 h-3 mr-1" /> Most Popular
@@ -441,7 +441,7 @@ const Index = () => {
             viewport={{ once: true }}
             variants={staggerContainer}
             className="max-w-4xl mx-auto mt-8">
-            <motion.div variants={fadeUp} className="p-6 rounded-2xl bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-red-500/10 border border-amber-500/30 backdrop-blur-xl">
+            <motion.div variants={fadeUp} className="p-6 rounded-2xl bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-red-500/10 border border-amber-500/30 bg-card/60">
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-full bg-amber-500/20 text-amber-400 shrink-0">
                   <Megaphone className="w-6 h-6" />
@@ -496,9 +496,9 @@ const Index = () => {
             { name: "Solana", logo: solanaLogo }].
             map((method) =>
             <motion.div key={method.name} variants={scaleUp} whileHover={scaleHover}>
-                <div className="flex flex-col items-center gap-3 p-6 rounded-2xl bg-card/50 backdrop-blur border border-border/50 hover:border-primary/30 transition-all duration-300 h-full">
+                <div className="flex flex-col items-center gap-3 p-6 rounded-2xl bg-card/80 border border-border/50 hover:border-primary/30 transition-all duration-300 h-full">
                   {method.logo ?
-                <img src={method.logo} alt={method.name} className="w-12 h-12 rounded-xl object-cover" /> :
+                <img src={method.logo} alt={method.name} loading="lazy" decoding="async" width={48} height={48} className="w-12 h-12 rounded-xl object-cover" /> :
 
                 <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center">
                       <Wallet className="w-6 h-6 text-primary" />
@@ -534,7 +534,7 @@ const Index = () => {
             { step: "4", icon: Check, title: "Get Premium", desc: "Receive X Premium directly on your account" }].
             map((item) =>
             <motion.div key={item.step} variants={rotateIn} whileHover={scaleHover} className="relative group">
-                <div className="p-6 rounded-2xl bg-card/50 backdrop-blur border border-border/50 hover:border-primary/30 transition-all duration-300 text-center h-full">
+                <div className="p-6 rounded-2xl bg-card/80 border border-border/50 hover:border-primary/30 transition-all duration-300 text-center h-full">
                   <div className="w-12 h-12 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-4">
                     <item.icon className="w-5 h-5 text-primary" />
                   </div>
@@ -570,7 +570,7 @@ const Index = () => {
             { icon: "👉", text: "Don't change your X name, profile picture, or cover photo during the process, or your account may become ineligible." },
             { icon: "📌", text: "A 3-month subscription can only be taken once per cycle. You can subscribe again after the current one ends." }].
             map((note, i) =>
-            <motion.div key={i} variants={i % 2 === 0 ? fadeLeft : fadeRight} className="flex gap-4 p-5 rounded-xl bg-card/50 backdrop-blur border border-border/50">
+            <motion.div key={i} variants={i % 2 === 0 ? fadeLeft : fadeRight} className="flex gap-4 p-5 rounded-xl bg-card/80 border border-border/50">
                 <span className="text-xl flex-shrink-0">{note.icon}</span>
                 <p className="text-sm text-muted-foreground leading-relaxed">{note.text}</p>
               </motion.div>
@@ -600,7 +600,7 @@ const Index = () => {
               { step: "3", title: "Find X Premium", desc: "Look under Expired or Active and tap \"Remove\"" },
               { step: "4", title: "Confirm Removal", desc: "Tap \"Remove\" to confirm — then you're ready!" }].
               map((item) =>
-              <motion.div key={item.step} variants={fadeUp} whileHover={scaleHover} className="p-5 rounded-xl bg-card/50 backdrop-blur border border-border/50 text-center">
+              <motion.div key={item.step} variants={fadeUp} whileHover={scaleHover} className="p-5 rounded-xl bg-card/80 border border-border/50 text-center">
                   <div className="w-10 h-10 rounded-full bg-destructive/10 border border-destructive/20 flex items-center justify-center mx-auto mb-3">
                     <span className="text-sm font-bold text-destructive">{item.step}</span>
                   </div>
@@ -625,7 +625,7 @@ const Index = () => {
             initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}
             variants={staggerContainer}>
             <div className="absolute inset-0 bg-gradient-to-r from-secondary/20 via-accent/20 to-primary/20" />
-            <div className="relative p-8 sm:p-12 text-center border border-primary/20 rounded-2xl backdrop-blur">
+            <div className="relative p-8 sm:p-12 text-center border border-primary/20 rounded-2xl bg-card/80">
               <motion.div variants={scaleUp}>
                 <Shield className="w-12 h-12 text-primary mx-auto mb-6 animate-float" />
               </motion.div>
@@ -659,7 +659,7 @@ const Index = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Numeric stat: Customers */}
-            <motion.div variants={scaleUp} className="relative rounded-2xl border border-border/50 bg-card/50 backdrop-blur p-8 text-center overflow-hidden group">
+            <motion.div variants={scaleUp} className="relative rounded-2xl border border-border/50 bg-card/80 p-8 text-center overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <Users className="w-8 h-8 text-primary mx-auto mb-4" />
               <div className="text-4xl sm:text-5xl font-bold font-display text-foreground mb-2">
@@ -669,7 +669,7 @@ const Index = () => {
             </motion.div>
 
             {/* Numeric stat: Delivery Time */}
-            <motion.div variants={scaleUp} className="relative rounded-2xl border border-border/50 bg-card/50 backdrop-blur p-8 text-center overflow-hidden group">
+            <motion.div variants={scaleUp} className="relative rounded-2xl border border-border/50 bg-card/80 p-8 text-center overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <Clock className="w-8 h-8 text-accent mx-auto mb-4" />
               <div className="text-4xl sm:text-5xl font-bold font-display text-foreground mb-2">
@@ -679,7 +679,7 @@ const Index = () => {
             </motion.div>
 
             {/* Numeric stat: Satisfaction */}
-            <motion.div variants={scaleUp} className="relative rounded-2xl border border-border/50 bg-card/50 backdrop-blur p-8 text-center overflow-hidden group">
+            <motion.div variants={scaleUp} className="relative rounded-2xl border border-border/50 bg-card/80 p-8 text-center overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <ThumbsUp className="w-8 h-8 text-primary mx-auto mb-4" />
               <div className="text-4xl sm:text-5xl font-bold font-display text-foreground mb-2">
@@ -689,7 +689,7 @@ const Index = () => {
             </motion.div>
 
             {/* Non-numeric stat: Availability */}
-            <motion.div variants={scaleUp} className="relative rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/10 via-card/50 to-accent/10 backdrop-blur p-8 text-center overflow-hidden group">
+            <motion.div variants={scaleUp} className="relative rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/10 via-card/80 to-accent/10 p-8 text-center overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <motion.div
                 animate={{ rotate: [0, 360] }}
@@ -770,7 +770,7 @@ const Index = () => {
             }].
             map((review, i) =>
             <motion.div key={i} variants={scaleUp} whileHover={scaleHover}>
-                <div className="p-6 rounded-2xl bg-card/50 backdrop-blur border border-border/50 hover:border-primary/30 transition-all duration-300 h-full flex flex-col">
+                <div className="p-6 rounded-2xl bg-card/80 border border-border/50 hover:border-primary/30 transition-all duration-300 h-full flex flex-col">
                   <div className="flex gap-1 mb-4">
                     {Array.from({ length: review.rating }).map((_, j) =>
                   <Star key={j} className="w-4 h-4 fill-primary text-primary" />
@@ -849,7 +849,7 @@ const Index = () => {
               }].
               map((faq, i) =>
               <motion.div key={i} variants={fadeUp}>
-                  <AccordionItem value={`faq-${i}`} className="rounded-xl border border-border/50 bg-card/50 backdrop-blur px-5 data-[state=open]:border-primary/30 transition-colors">
+                  <AccordionItem value={`faq-${i}`} className="rounded-xl border border-border/50 bg-card/80 px-5 data-[state=open]:border-primary/30 transition-colors">
                     <AccordionTrigger className="text-sm font-semibold text-foreground hover:text-primary hover:no-underline py-4">
                       {faq.q}
                     </AccordionTrigger>
