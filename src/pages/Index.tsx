@@ -172,7 +172,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden">
+    <div className="min-h-screen bg-background overflow-x-hidden pb-24 md:pb-0">
       <ScrollProgressBar />
       <AmbientBackground />
       {/* Sticky Header */}
@@ -899,11 +899,35 @@ const Index = () => {
         transition={{ type: "spring", stiffness: 300, damping: 25 }}
         whileHover={ctaHover}
         whileTap={ctaTap}
-        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-primary-foreground font-bold shadow-lg pointer-events-auto"
+        className="fixed bottom-6 right-6 z-50 hidden md:flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-primary-foreground font-bold shadow-lg pointer-events-auto"
         style={{ pointerEvents: showFloatingCta ? "auto" : "none" }}
       >
         <Send className="w-5 h-5" />
         Order Now
+      </motion.a>
+
+      {/* Mobile fixed Telegram contact bar */}
+      <motion.a
+        href={TELEGRAM_LINK}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Message on Telegram"
+        initial={false}
+        animate={showFloatingCta ? { opacity: 1, y: 0 } : { opacity: 0, y: 90 }}
+        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        whileTap={ctaTap}
+        className="fixed left-3 right-3 z-50 flex items-center justify-center gap-2 rounded-2xl bg-primary px-5 py-3.5 text-base font-bold text-primary-foreground shadow-xl md:hidden"
+        style={{
+          pointerEvents: showFloatingCta ? "auto" : "none",
+          bottom: "max(0.75rem, env(safe-area-inset-bottom))",
+          touchAction: "manipulation"
+        }}
+      >
+        <Send className="w-5 h-5" />
+        Message on Telegram
+        <span className="ml-1 rounded-full bg-primary-foreground/20 px-2 py-0.5 text-[11px] font-semibold">
+          24/7
+        </span>
       </motion.a>
     </div>);
 
