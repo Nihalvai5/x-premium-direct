@@ -16,16 +16,21 @@ export function DisabledPlanCard({ plan }: { plan: DisabledPlan }) {
   const message = plan.isPlus
     ? "Premium+ is temporarily offline."
     : "This plan is temporarily unavailable.";
+  // Only use hover on devices with a real mouse — on touch devices hover
+  // emulation opens the popover mid-scroll and blocks the page.
+  const canHover =
+    typeof window !== "undefined" &&
+    window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <button
           type="button"
           aria-label={`${plan.title} — ${message} Tap for details.`}
-          onMouseEnter={() => setOpen(true)}
-          onMouseLeave={() => setOpen(false)}
-          onFocus={() => setOpen(true)}
-          onBlur={() => setOpen(false)}
+          onMouseEnter={canHover ? () => setOpen(true) : undefined}
+          onMouseLeave={canHover ? () => setOpen(false) : undefined}
+          onFocus={canHover ? () => setOpen(true) : undefined}
+          onBlur={canHover ? () => setOpen(false) : undefined}
           className="relative h-full w-full text-left rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
         >
           <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
