@@ -168,3 +168,10 @@
     animation: none;
   }
 }
+
+/* Performance: background blur on many cards makes scrolling lag on phones.
+   Keep blur only on the sticky header. */
+section [class*="backdrop-blur"] {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}

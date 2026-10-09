@@ -130,17 +130,13 @@ const Index = () => {
   const satisfactionRate = useCounter(99, 2000, statsInView);
 
   useEffect(() => {
-    const handleScroll = () => {
+    let ticking = false;
+    const sections = ["#faq", "#how-it-works", "#payment", "#pricing", "#hero"];
+    const update = () => {
+      ticking = false;
       setScrolled(window.scrollY > 50);
-
-      // Show floating CTA after scrolling past hero
-      const hero = document.querySelector("#hero");
-      if (hero) {
-        const heroBottom = hero.getBoundingClientRect().bottom;
-        setShowFloatingCta(heroBottom < 0);
-      }
-
-      const sections = ["#faq", "#how-it-works", "#payment", "#pricing", "#hero"];
+      const hero = document.getElementById("hero");
+      if (hero) setShowFloatingCta(hero.getBoundingClientRect().bottom < 0);
       for (const id of sections) {
         const el = document.querySelector(id);
         if (el) {
@@ -150,6 +146,12 @@ const Index = () => {
             return;
           }
         }
+      }
+    };
+    const handleScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
       }
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -256,7 +258,7 @@ const Index = () => {
       {/* Hero Section */}
       <section id="hero" className="relative min-h-[90vh] flex items-center justify-center px-4 py-20">
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-1/2 -left-1/2 w-[200%] h-[200%] bg-[radial-gradient(ellipse_at_30%_20%,hsl(260,60%,25%)_0%,transparent_50%),radial-gradient(ellipse_at_70%_60%,hsl(210,100%,20%)_0%,transparent_50%),radial-gradient(ellipse_at_50%_80%,hsl(45,100%,15%)_0%,transparent_40%)] animate-pulse-glow" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,hsl(260,60%,25%)_0%,transparent_50%),radial-gradient(ellipse_at_70%_60%,hsl(210,100%,20%)_0%,transparent_50%),radial-gradient(ellipse_at_50%_80%,hsl(45,100%,15%)_0%,transparent_40%)]" />
         </div>
         <div className="absolute inset-0 bg-background/40" />
 
