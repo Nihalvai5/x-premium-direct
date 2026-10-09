@@ -20,6 +20,7 @@ export function DisabledPlanCard({ plan }: { plan: DisabledPlan }) {
   // emulation opens the popover mid-scroll and blocks the page.
   const canHover =
     typeof window !== "undefined" &&
+    typeof window.matchMedia === "function" &&
     window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   return (
     <Popover open={open} onOpenChange={setOpen}>
