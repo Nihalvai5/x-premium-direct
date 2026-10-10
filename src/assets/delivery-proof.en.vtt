@@ -1,0 +1,23 @@
+WEBVTT
+
+00:00.000 --> 00:04.000
+The X profile is shown before checkout.
+
+00:04.000 --> 00:10.500
+The subscription payment is submitted
+on X's checkout page.
+
+00:10.500 --> 00:14.500
+X's checkout shows “Processing”.
+
+00:14.500 --> 00:26.500
+The profile is checked again
+after the payment step.
+
+00:26.500 --> 00:31.000
+The profile page is reloaded
+to check the updated status.
+
+00:31.000 --> 00:35.773
+A blue verification badge is now visible
+beside the profile name.
