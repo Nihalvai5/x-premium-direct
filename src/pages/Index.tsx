@@ -17,6 +17,7 @@ import solanaLogo from "@/assets/solana.png";
 import proofVideo from "@/assets/delivery-proof.mp4.asset.json";
 import proofPoster from "@/assets/delivery-proof-poster.jpg.asset.json";
 import proofWebm from "@/assets/delivery-proof.webm.asset.json";
+import proofCaptions from "@/assets/delivery-proof.en.vtt?url";
 
 const TELEGRAM_LINK = "https://t.me/Nihalvai332?text=1️⃣%20My%20X%20profile%20link:%0A2️⃣%20Months:%206%20Months%0A3️⃣%20Payment:%20Wallet";
 
@@ -355,6 +356,13 @@ const Index = () => {
               >
                 <source src={proofVideo.url} type="video/mp4" />
                 <source src={proofWebm.url} type="video/webm" />
+                <track
+                  kind="captions"
+                  src={proofCaptions}
+                  srcLang="en"
+                  label="English"
+                  default
+                />
                 Your browser can&apos;t play this video.
               </video>
             </div>
