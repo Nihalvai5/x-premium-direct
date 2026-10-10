@@ -251,19 +251,39 @@ export function GiftEligibilityChecker() {
                     </>
                   )}
                   {tone === "eligible" && (
-                    <motion.a
-                      href={buildTelegramLink(handle)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.03 }}
-                      whileTap={{ scale: 0.97 }}
-                      className="inline-block mt-1"
-                    >
-                      <Button size="sm" className="rounded-full bg-gradient-to-r from-primary to-gold">
-                        <Send className="w-4 h-4 mr-2" />
-                        Eligible — Order Now
-                      </Button>
-                    </motion.a>
+                    <div className="mt-1 space-y-3">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-medium opacity-80">Choose your plan:</span>
+                        {([3, 6] as const).map((m) => (
+                          <button
+                            key={m}
+                            type="button"
+                            onClick={() => setMonths(m)}
+                            aria-pressed={months === m}
+                            className={`rounded-full px-3 py-1 text-xs font-semibold border transition ${
+                              months === m
+                                ? "bg-primary text-primary-foreground border-primary"
+                                : "bg-background/60 text-foreground border-border hover:border-primary/60"
+                            }`}
+                          >
+                            {m} Months — ${m === 3 ? 5 : 8}
+                          </button>
+                        ))}
+                      </div>
+                      <motion.a
+                        href={buildTelegramLink(handle, months)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.97 }}
+                        className="inline-block"
+                      >
+                        <Button size="sm" className="rounded-full bg-gradient-to-r from-primary to-gold">
+                          <Send className="w-4 h-4 mr-2" />
+                          Eligible — Order Now
+                        </Button>
+                      </motion.a>
+                    </div>
                   )}
                   {tone === "warn" && (
                     <p className="opacity-80">
