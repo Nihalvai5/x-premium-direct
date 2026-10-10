@@ -89,17 +89,19 @@ function normalizeHandle(raw: string): string {
 export function GiftEligibilityChecker() {
   const [handle, setHandle] = useState("");
   const [state, setState] = useState<UiState>({ kind: "idle" });
+  const [months, setMonths] = useState<3 | 6>(6);
   const abortRef = useRef<AbortController | null>(null);
   const reqIdRef = useRef(0);
 
   // Pre-filled Telegram order message; the checked account's profile link
-  // is inserted into field 1 so the user doesn't have to type it.
-  const buildTelegramLink = (username: string) => {
+  // and the buyer's chosen plan are inserted so they don't have to type them.
+  const buildTelegramLink = (username: string, planMonths: 3 | 6) => {
     const h = normalizeHandle(username);
     const message =
       `1%EF%B8%8F%E2%83%A3%20My%20X%20profile%20link:%20https://x.com/${encodeURIComponent(h)}` +
-      `%0A2%EF%B8%8F%E2%83%A3%20Months:%206%20Months` +
-      `%0A3%EF%B8%8F%E2%83%A3%20Payment:%20Wallet`;
+      `%0A2%EF%B8%8F%E2%83%A3%20Months:%20${planMonths}%20Months` +
+      `%0A3%EF%B8%8F%E2%83%A3%20Payment:%20` +
+      `%0A%0AI%20checked%20the%20website%20and%20my%20account%20is%20eligible.`;
     return `https://t.me/Nihalvai332?text=${message}`;
   };
 
