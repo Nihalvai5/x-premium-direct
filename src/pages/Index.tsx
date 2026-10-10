@@ -8,12 +8,15 @@ import { DisabledPlanCard } from "@/components/DisabledPlanCard";
 import { GiftEligibilityChecker } from "@/components/GiftEligibilityChecker";
 import { ScrollProgressBar, AmbientBackground } from "@/components/PageFX";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Check, CheckCircle, Clock, Crown, DollarSign, ExternalLink, Globe, HelpCircle, Lock, Megaphone, Menu, MessageCircle, MessageSquare, Pen, Send, Shield, Sparkles, Star, ThumbsUp, Users, Wallet, X, Zap } from "lucide-react";
+import { Check, CheckCircle, Clock, Crown, DollarSign, ExternalLink, Globe, HelpCircle, Lock, Megaphone, Menu, MessageCircle, MessageSquare, Pen, Play, Send, Shield, Sparkles, Star, ThumbsUp, Users, Wallet, X, Zap } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import binanceLogo from "@/assets/binance.png";
 import bybitLogo from "@/assets/bybit.png";
 import mexcLogo from "@/assets/mexc.png";
 import solanaLogo from "@/assets/solana.png";
+import proofVideo from "@/assets/delivery-proof.mp4.asset.json";
+import proofPoster from "@/assets/delivery-proof-poster.jpg.asset.json";
+import proofWebm from "@/assets/delivery-proof.webm.asset.json";
 
 const TELEGRAM_LINK = "https://t.me/Nihalvai332?text=1️⃣%20My%20X%20profile%20link:%0A2️⃣%20Months:%206%20Months%0A3️⃣%20Payment:%20Wallet";
 
@@ -307,6 +310,81 @@ const Index = () => {
         <GiftEligibilityChecker />
 
       </section>
+
+      {/* Delivery Proof Video */}
+      <section id="proof" className="relative py-16 px-4">
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={staggerContainer}
+            className="text-center mb-8"
+          >
+            <motion.div variants={scaleUp} className="flex justify-center mb-4">
+              <Badge className="bg-gradient-to-r from-primary to-gold text-primary-foreground border-0 text-xs uppercase tracking-wider">
+                <Play className="w-3 h-3 mr-1" />
+                Real recording
+              </Badge>
+            </motion.div>
+            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-bold font-display mb-3">
+              Delivery <span className="text-primary">Proof</span>
+            </motion.h2>
+            <motion.p variants={fadeUp} className="text-muted-foreground max-w-xl mx-auto">
+              Watch a real order being completed. The payment happens on X&apos;s own checkout, so
+              your subscription comes directly from X — never through a third party.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.25 }}
+            variants={blurUp}
+            className="flex justify-center"
+          >
+            <div className="relative w-full max-w-[290px] sm:max-w-[330px] rounded-3xl border border-border/60 p-2 shadow-[0_0_45px_hsl(45,100%,55%,0.12)]">
+              <video
+                poster={proofPoster.url}
+                controls
+                playsInline
+                preload="none"
+                controlsList="nodownload"
+                aria-label="Screen recording showing an X Premium subscription being paid for on X's own checkout"
+                className="w-full aspect-[9/16] object-cover rounded-2xl bg-black"
+              >
+                <source src={proofVideo.url} type="video/mp4" />
+                <source src={proofWebm.url} type="video/webm" />
+                Your browser can&apos;t play this video.
+              </video>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.4 }}
+            variants={staggerFast}
+            className="mt-7 flex flex-wrap justify-center gap-3"
+          >
+            {[
+              { icon: Shield, text: "Delivered directly by X" },
+              { icon: X, text: "Paid on X.com checkout" },
+              { icon: MessageCircle, text: "Telegram: @Nihalvai332" },
+            ].map(({ icon: Icon, text }) => (
+              <motion.span
+                key={text}
+                variants={scaleUp}
+                className="inline-flex items-center gap-2 rounded-full border border-border/60 px-4 py-2 text-sm text-muted-foreground"
+              >
+                <Icon className="w-4 h-4 text-gold" />
+                {text}
+              </motion.span>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
 
       {/* Pricing Section */}
       <section id="pricing" className="relative py-20 px-4">
