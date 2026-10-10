@@ -310,6 +310,78 @@ const Index = () => {
 
       </section>
 
+      {/* Delivery Proof Video */}
+      <section id="proof" className="relative py-16 px-4">
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={staggerContainer}
+            className="text-center mb-8"
+          >
+            <motion.div variants={scaleUp} className="flex justify-center mb-4">
+              <Badge className="bg-gradient-to-r from-primary to-gold text-primary-foreground border-0 text-xs uppercase tracking-wider">
+                <Play className="w-3 h-3 mr-1" />
+                Real recording
+              </Badge>
+            </motion.div>
+            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-bold font-display mb-3">
+              Delivery <span className="text-primary">Proof</span>
+            </motion.h2>
+            <motion.p variants={fadeUp} className="text-muted-foreground max-w-xl mx-auto">
+              Watch a real order being completed. The payment happens on X&apos;s own checkout, so
+              your subscription comes directly from X — never through a third party.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.25 }}
+            variants={blurUp}
+            className="flex justify-center"
+          >
+            <div className="relative w-full max-w-[290px] sm:max-w-[330px] rounded-3xl border border-border/60 p-2 shadow-[0_0_45px_hsl(45,100%,55%,0.12)]">
+              <video
+                src={proofVideo.url}
+                poster={proofPoster.url}
+                controls
+                playsInline
+                preload="none"
+                controlsList="nodownload"
+                aria-label="Screen recording showing an X Premium subscription being paid for on X's own checkout"
+                className="w-full aspect-[9/16] object-cover rounded-2xl bg-black"
+              />
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.4 }}
+            variants={staggerFast}
+            className="mt-7 flex flex-wrap justify-center gap-3"
+          >
+            {[
+              { icon: Shield, text: "Delivered directly by X" },
+              { icon: X, text: "Paid on X.com checkout" },
+              { icon: MessageCircle, text: "Telegram: @Nihalvai332" },
+            ].map(({ icon: Icon, text }) => (
+              <motion.span
+                key={text}
+                variants={scaleUp}
+                className="inline-flex items-center gap-2 rounded-full border border-border/60 px-4 py-2 text-sm text-muted-foreground"
+              >
+                <Icon className="w-4 h-4 text-gold" />
+                {text}
+              </motion.span>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+
       {/* Pricing Section */}
       <section id="pricing" className="relative py-20 px-4">
         <div className="max-w-6xl mx-auto">
