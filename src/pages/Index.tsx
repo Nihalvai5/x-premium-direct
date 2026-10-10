@@ -16,6 +16,7 @@ import mexcLogo from "@/assets/mexc.png";
 import solanaLogo from "@/assets/solana.png";
 import proofVideo from "@/assets/delivery-proof.mp4.asset.json";
 import proofPoster from "@/assets/delivery-proof-poster.jpg.asset.json";
+import proofWebm from "@/assets/delivery-proof.webm.asset.json";
 
 const TELEGRAM_LINK = "https://t.me/Nihalvai332?text=1️⃣%20My%20X%20profile%20link:%0A2️⃣%20Months:%206%20Months%0A3️⃣%20Payment:%20Wallet";
 
@@ -344,7 +345,6 @@ const Index = () => {
           >
             <div className="relative w-full max-w-[290px] sm:max-w-[330px] rounded-3xl border border-border/60 p-2 shadow-[0_0_45px_hsl(45,100%,55%,0.12)]">
               <video
-                src={proofVideo.url}
                 poster={proofPoster.url}
                 controls
                 playsInline
@@ -352,7 +352,11 @@ const Index = () => {
                 controlsList="nodownload"
                 aria-label="Screen recording showing an X Premium subscription being paid for on X's own checkout"
                 className="w-full aspect-[9/16] object-cover rounded-2xl bg-black"
-              />
+              >
+                <source src={proofVideo.url} type="video/mp4" />
+                <source src={proofWebm.url} type="video/webm" />
+                Your browser can&apos;t play this video.
+              </video>
             </div>
           </motion.div>
 
