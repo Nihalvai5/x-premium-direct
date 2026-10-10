@@ -89,17 +89,19 @@ function normalizeHandle(raw: string): string {
 export function GiftEligibilityChecker() {
   const [handle, setHandle] = useState("");
   const [state, setState] = useState<UiState>({ kind: "idle" });
+  const [months, setMonths] = useState<3 | 6>(6);
   const abortRef = useRef<AbortController | null>(null);
   const reqIdRef = useRef(0);
 
   // Pre-filled Telegram order message; the checked account's profile link
-  // is inserted into field 1 so the user doesn't have to type it.
-  const buildTelegramLink = (username: string) => {
+  // and the buyer's chosen plan are inserted so they don't have to type them.
+  const buildTelegramLink = (username: string, planMonths: 3 | 6) => {
     const h = normalizeHandle(username);
     const message =
       `1%EF%B8%8F%E2%83%A3%20My%20X%20profile%20link:%20https://x.com/${encodeURIComponent(h)}` +
-      `%0A2%EF%B8%8F%E2%83%A3%20Months:%206%20Months` +
-      `%0A3%EF%B8%8F%E2%83%A3%20Payment:%20Wallet`;
+      `%0A2%EF%B8%8F%E2%83%A3%20Months:%20${planMonths}%20Months` +
+      `%0A3%EF%B8%8F%E2%83%A3%20Payment:%20` +
+      `%0A%0AI%20checked%20the%20website%20and%20my%20account%20is%20eligible.`;
     return `https://t.me/Nihalvai332?text=${message}`;
   };
 
@@ -249,19 +251,39 @@ export function GiftEligibilityChecker() {
                     </>
                   )}
                   {tone === "eligible" && (
-                    <motion.a
-                      href={buildTelegramLink(handle)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.03 }}
-                      whileTap={{ scale: 0.97 }}
-                      className="inline-block mt-1"
-                    >
-                      <Button size="sm" className="rounded-full bg-gradient-to-r from-primary to-gold">
-                        <Send className="w-4 h-4 mr-2" />
-                        Eligible — Order Now
-                      </Button>
-                    </motion.a>
+                    <div className="mt-1 space-y-3">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-medium opacity-80">Choose your plan:</span>
+                        {([3, 6] as const).map((m) => (
+                          <button
+                            key={m}
+                            type="button"
+                            onClick={() => setMonths(m)}
+                            aria-pressed={months === m}
+                            className={`rounded-full px-3 py-1 text-xs font-semibold border transition ${
+                              months === m
+                                ? "bg-primary text-primary-foreground border-primary"
+                                : "bg-background/60 text-foreground border-border hover:border-primary/60"
+                            }`}
+                          >
+                            {m} Months — ${m === 3 ? 5 : 8}
+                          </button>
+                        ))}
+                      </div>
+                      <motion.a
+                        href={buildTelegramLink(handle, months)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.97 }}
+                        className="inline-block"
+                      >
+                        <Button size="sm" className="rounded-full bg-gradient-to-r from-primary to-gold">
+                          <Send className="w-4 h-4 mr-2" />
+                          Eligible — Order Now
+                        </Button>
+                      </motion.a>
+                    </div>
                   )}
                   {tone === "warn" && (
                     <p className="opacity-80">
