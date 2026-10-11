@@ -175,3 +175,11 @@ section [class*="backdrop-blur"] {
   -webkit-backdrop-filter: none !important;
   backdrop-filter: none !important;
 }
+
+/* Phones: no hover effects, infinite animations or filters — keeps scrolling smooth. */
+@media (hover: none), (pointer: coarse) {
+  .hover-tilt:hover { transform: none; box-shadow: none; }
+  .animate-shimmer, .animate-float, .animate-float-slow, .animate-gradient-pan, .animate-pulse { animation: none !important; }
+  section .grayscale { filter: none !important; }
+  html { scroll-behavior: auto; }
+}

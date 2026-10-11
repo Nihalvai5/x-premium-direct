@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
@@ -22,8 +22,15 @@ export function DisabledPlanCard({ plan }: { plan: DisabledPlan }) {
     typeof window !== "undefined" &&
     typeof window.matchMedia === "function" &&
     window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  // Close the popup as soon as the page scrolls so it never traps scrolling.
+  useEffect(() => {
+    if (!open) return;
+    const close = () => setOpen(false);
+    window.addEventListener("scroll", close, { passive: true });
+    return () => window.removeEventListener("scroll", close);
+  }, [open]);
   return (
-    <Popover open={open} onOpenChange={setOpen}>
+    <Popover open={open} onOpenChange={setOpen} modal={false}>
       <PopoverTrigger asChild>
         <button
           type="button"
@@ -39,7 +46,7 @@ export function DisabledPlanCard({ plan }: { plan: DisabledPlan }) {
               <Lock className="w-3 h-3 mr-1" /> Temporarily Offline
             </Badge>
           </div>
-          <Card className="relative border-border/30 bg-card/60 opacity-60 grayscale cursor-not-allowed h-full">
+          <Card className="relative border-border/30 bg-card/60 opacity-50 cursor-not-allowed h-full">
             <CardHeader className="text-center pb-2 pt-6">
               <CardTitle className="text-lg font-display text-muted-foreground">{plan.title}</CardTitle>
               <div className="mt-4 flex items-baseline justify-center gap-2">
@@ -61,6 +68,7 @@ export function DisabledPlanCard({ plan }: { plan: DisabledPlan }) {
         align="center"
         sideOffset={12}
         collisionPadding={16}
+        onOpenAutoFocus={(e) => e.preventDefault()}
         className="w-[calc(100vw-2rem)] max-w-sm sm:max-w-xs text-center p-4 border-primary/30"
       >
         <p className="text-sm leading-relaxed text-foreground">

@@ -1020,7 +1020,8 @@ const Index = () => {
           24/7
         </span>
       </motion.a>
-    </div>);
+    </div>
+    </MotionConfig>);
 
 };
 
