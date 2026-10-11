@@ -135,7 +135,7 @@ const Index = () => {
 
   useEffect(() => {
     let ticking = false;
-    const sections = ["#faq", "#how-it-works", "#payment", "#pricing", "#hero"];
+    const sections = ["#faq", "#how-it-works", "#payment", "#pricing", "#proof", "#eligibility-check", "#hero"];
     const update = () => {
       ticking = false;
       setScrolled(window.scrollY > 50);
@@ -163,6 +163,8 @@ const Index = () => {
   }, []);
 
   const navLinks = [
+  { label: "Eligibility Check", href: "#eligibility-check" },
+  { label: "Delivery Proof", href: "#proof" },
   { label: "Pricing", href: "#pricing" },
   { label: "Payment", href: "#payment" },
   { label: "How It Works", href: "#how-it-works" },
