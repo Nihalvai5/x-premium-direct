@@ -312,6 +312,7 @@ const Index = () => {
       <section id="eligibility-check" className="relative py-16 px-4">
         <GiftEligibilityChecker />
 
+
       </section>
 
       {/* Delivery Proof Video */}
