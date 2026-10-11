@@ -9,7 +9,7 @@ import { GiftEligibilityChecker } from "@/components/GiftEligibilityChecker";
 import { ScrollProgressBar, AmbientBackground } from "@/components/PageFX";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Check, CheckCircle, Clock, Crown, DollarSign, ExternalLink, Globe, HelpCircle, Lock, Megaphone, Menu, MessageCircle, MessageSquare, Pen, Play, Send, Shield, Sparkles, Star, ThumbsUp, Users, Wallet, X, Zap } from "lucide-react";
-import { motion, useScroll, useTransform, MotionConfig } from "framer-motion";
+import { motion, useScroll, useTransform, useReducedMotion, MotionConfig } from "framer-motion";
 const IS_TOUCH = typeof window !== "undefined" && typeof window.matchMedia === "function" && window.matchMedia("(hover: none), (pointer: coarse)").matches;
 import binanceLogo from "@/assets/binance.png";
 import bybitLogo from "@/assets/bybit.png";
@@ -98,21 +98,18 @@ const glowPulse = {
 };
 // Animated counter hook
 const useCounter = (target: number, duration = 2000, startCounting: boolean) => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(IS_TOUCH ? target : 0);
   useEffect(() => {
-    if (!startCounting) return;
-    let start = 0;
-    const increment = target / (duration / 16);
-    const timer = setInterval(() => {
-      start += increment;
-      if (start >= target) {
-        setCount(target);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(start));
-      }
-    }, 16);
-    return () => clearInterval(timer);
+    if (!startCounting || IS_TOUCH) return;
+    const start = performance.now();
+    let frame = 0;
+    const tick = (now: number) => {
+      const progress = Math.min((now - start) / duration, 1);
+      setCount(Math.floor(target * progress));
+      if (progress < 1) frame = requestAnimationFrame(tick);
+    };
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
   }, [target, duration, startCounting]);
   return count;
 };
@@ -123,6 +120,8 @@ const Index = () => {
   const [activeSection, setActiveSection] = useState("");
   const [showFloatingCta, setShowFloatingCta] = useState(false);
   const [statsInView, setStatsInView] = useState(false);
+  const reducedMotion = useReducedMotion();
+  const staticMotion = IS_TOUCH || reducedMotion;
 
   // Hero parallax: content drifts up and fades as the user scrolls away
   const { scrollY } = useScroll();
@@ -135,32 +134,42 @@ const Index = () => {
   const satisfactionRate = useCounter(99, 2000, statsInView);
 
   useEffect(() => {
-    let ticking = false;
+    let frame = 0;
     const sections = ["#faq", "#how-it-works", "#payment", "#pricing", "#proof", "#eligibility-check", "#hero"];
+    const elements = sections.map(id => ({ id, el: document.querySelector(id) }));
+    let bounds: { id: string; top: number; bottom: number }[] = [];
+    let heroBottom = 0;
+    const measure = () => {
+      bounds = elements.flatMap(({ id, el }) => {
+        if (!el) return [];
+        const rect = el.getBoundingClientRect();
+        return [{ id, top: rect.top + window.scrollY, bottom: rect.bottom + window.scrollY }];
+      });
+      heroBottom = bounds.find(section => section.id === "#hero")?.bottom ?? 0;
+    };
     const update = () => {
-      ticking = false;
-      setScrolled(window.scrollY > 50);
-      const hero = document.getElementById("hero");
-      if (hero) setShowFloatingCta(hero.getBoundingClientRect().bottom < 0);
-      for (const id of sections) {
-        const el = document.querySelector(id);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= 120 && rect.bottom > 120) {
-            setActiveSection(id);
-            return;
-          }
-        }
-      }
+      frame = 0;
+      const y = window.scrollY;
+      setScrolled(y > 50);
+      setShowFloatingCta(y > heroBottom);
+      setActiveSection(bounds.find(section => section.top <= y + 120 && section.bottom > y + 120)?.id ?? "");
     };
     const handleScroll = () => {
-      if (!ticking) {
-        ticking = true;
-        requestAnimationFrame(update);
-      }
+      if (!frame) frame = requestAnimationFrame(update);
     };
+    const resize = new ResizeObserver(() => { measure(); handleScroll(); });
+    const root = document.getElementById("root");
+    if (root) resize.observe(root);
+    measure();
+    update();
+    window.addEventListener("resize", measure);
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      cancelAnimationFrame(frame);
+      resize.disconnect();
+      window.removeEventListener("resize", measure);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const navLinks = [
@@ -174,7 +183,7 @@ const Index = () => {
 
   const scrollToSection = (href: string) => {
     const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    if (el) el.scrollIntoView({ behavior: staticMotion ? "instant" : "smooth" });
     setMobileMenuOpen(false);
   };
 
@@ -198,7 +207,7 @@ const Index = () => {
           </button>
 
           {/* Desktop Nav */}
-          <nav className="hidden sm:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) =>
             <button
               key={link.href}
@@ -222,14 +231,17 @@ const Index = () => {
 
 
           {/* Mobile actions */}
-          <div className="flex items-center gap-1 sm:hidden">
+          <div className="flex items-center gap-1 lg:hidden">
             <ThemeToggle />
-            <button
+            <Button variant="ghost" size="icon"
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-navigation"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 text-muted-foreground hover:text-foreground transition-colors">
 
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
+            </Button>
           </div>
 
         </div>
@@ -239,7 +251,8 @@ const Index = () => {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="sm:hidden bg-background/95 backdrop-blur-xl border-b border-border/50 px-4 pb-4">
+          id="mobile-navigation"
+          className="lg:hidden max-h-[calc(100dvh-4rem)] overflow-y-auto bg-background/95 backdrop-blur-xl border-b border-border/50 px-4 pb-4">
           
             {navLinks.map((link) =>
           <button
@@ -287,7 +300,7 @@ const Index = () => {
             className="text-4xl sm:text-5xl md:text-7xl font-bold font-display leading-tight mb-6">
             Get <motion.span
               className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-purple to-accent inline-block"
-              animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+              animate={staticMotion ? undefined : { backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
               transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
               style={{ backgroundSize: "200% 200%" }}
             >X Premium</motion.span>
@@ -783,7 +796,7 @@ const Index = () => {
             <motion.div variants={scaleUp} className="relative rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/10 via-card/80 to-accent/10 p-8 text-center overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <motion.div
-                animate={{ rotate: [0, 360] }}
+                animate={staticMotion ? undefined : { rotate: [0, 360] }}
                 transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
               >
                 <Globe className="w-8 h-8 text-primary mx-auto" />
@@ -794,7 +807,7 @@ const Index = () => {
               <p className="text-sm text-muted-foreground">Always Available</p>
               <motion.div
                 className="mt-3 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-xs text-primary font-medium"
-                animate={{ opacity: [0.7, 1, 0.7] }}
+                animate={staticMotion ? undefined : { opacity: [0.7, 1, 0.7] }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
                 <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />

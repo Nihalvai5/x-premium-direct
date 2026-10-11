@@ -90,6 +90,17 @@ describe("DisabledPlanCard popover", () => {
     await expectPopoverVisible(/This plan is temporarily unavailable\./);
   });
 
+  it("closes when scrolling without locking the page", async () => {
+    render(<DisabledPlanCard plan={plusPlan} />);
+    fireEvent.click(screen.getByRole("button", { name: /6 Months Plus/i }));
+    await expectPopoverVisible(/Premium\+ is temporarily offline\./);
+    expect(document.body).not.toHaveAttribute("data-scroll-locked");
+    fireEvent.scroll(window);
+    await waitFor(() => {
+      expect(screen.queryByText(/Premium\+ is temporarily offline\./)).not.toBeInTheDocument();
+    });
+  });
+
   it("exposes hover/focus/tap affordance via accessible name", () => {
     render(<DisabledPlanCard plan={plusPlan} />);
     const trigger = screen.getByRole("button", {
