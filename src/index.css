@@ -114,8 +114,6 @@
     position: relative;
     z-index: 1;
   }
-
-  section[id] { scroll-margin-top: 5rem; }
 }
 
 @layer utilities {
@@ -184,9 +182,4 @@ section [class*="backdrop-blur"] {
   .animate-shimmer, .animate-float, .animate-float-slow, .animate-gradient-pan, .animate-pulse { animation: none !important; }
   section .grayscale { filter: none !important; }
   html { scroll-behavior: auto; }
-  header [class*="backdrop-blur"], header[class*="backdrop-blur"] {
-    -webkit-backdrop-filter: none !important;
-    backdrop-filter: none !important;
-    background-color: hsl(var(--background));
-  }
 }
