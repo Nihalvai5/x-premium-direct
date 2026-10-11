@@ -9,7 +9,8 @@ import { GiftEligibilityChecker } from "@/components/GiftEligibilityChecker";
 import { ScrollProgressBar, AmbientBackground } from "@/components/PageFX";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Check, CheckCircle, Clock, Crown, DollarSign, ExternalLink, Globe, HelpCircle, Lock, Megaphone, Menu, MessageCircle, MessageSquare, Pen, Play, Send, Shield, Sparkles, Star, ThumbsUp, Users, Wallet, X, Zap } from "lucide-react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, MotionConfig } from "framer-motion";
+const IS_TOUCH = typeof window !== "undefined" && typeof window.matchMedia === "function" && window.matchMedia("(hover: none), (pointer: coarse)").matches;
 import binanceLogo from "@/assets/binance.png";
 import bybitLogo from "@/assets/bybit.png";
 import mexcLogo from "@/assets/mexc.png";
@@ -37,8 +38,8 @@ const fadeUp = {
 
 /** Soft blur + lift reveal used for scroll-triggered content */
 const blurUp = {
-  hidden: { opacity: 0, y: 40, filter: "blur(10px)" },
-  visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const } }
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const } }
 };
 
 const fadeLeft = {
@@ -178,6 +179,7 @@ const Index = () => {
   };
 
   return (
+    <MotionConfig reducedMotion={IS_TOUCH ? "always" : "user"}>
     <div className="min-h-screen bg-background overflow-x-hidden pb-24 md:pb-0">
       <ScrollProgressBar />
       <AmbientBackground />
@@ -270,7 +272,7 @@ const Index = () => {
 
         <motion.div
           className="relative z-10 text-center max-w-4xl mx-auto"
-          style={{ y: heroY, opacity: heroOpacity, scale: heroScale }}
+          style={IS_TOUCH ? undefined : { y: heroY, opacity: heroOpacity, scale: heroScale }}
           initial="hidden"
           animate="visible"
           variants={staggerContainer}>
