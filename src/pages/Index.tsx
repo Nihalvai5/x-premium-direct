@@ -8,7 +8,7 @@ import { DisabledPlanCard } from "@/components/DisabledPlanCard";
 import { GiftEligibilityChecker } from "@/components/GiftEligibilityChecker";
 import { ScrollProgressBar, AmbientBackground } from "@/components/PageFX";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Check, CheckCircle, Clock, Crown, DollarSign, ExternalLink, Globe, HelpCircle, Lock, Megaphone, Menu, MessageCircle, MessageSquare, Pen, Play, Send, Shield, Sparkles, Star, ThumbsUp, Users, Wallet, X, Zap } from "lucide-react";
+import { Check, CheckCircle, Clock, Crown, DollarSign, ExternalLink, Globe, HelpCircle, Menu, MessageCircle, MessageSquare, Pen, Play, Send, Shield, Sparkles, Star, ThumbsUp, Users, Wallet, X, Zap } from "lucide-react";
 import { motion, useScroll, useTransform, MotionConfig } from "framer-motion";
 const IS_TOUCH = typeof window !== "undefined" && typeof window.matchMedia === "function" && window.matchMedia("(hover: none), (pointer: coarse)").matches;
 import binanceLogo from "@/assets/binance.png";
@@ -22,12 +22,6 @@ import proofCaptions from "@/assets/delivery-proof.en.vtt?url";
 
 const TELEGRAM_LINK = "https://t.me/Nihalvai332?text=1️⃣%20My%20X%20profile%20link:%0A2️⃣%20Months:%206%20Months%0A3️⃣%20Payment:%20Wallet";
 
-const disabledPlans = [
-  { title: "12 Months", isPlus: false },
-  { title: "3 Months Plus", isPlus: true },
-  { title: "6 Months Plus", isPlus: true },
-  { title: "12 Months Plus", isPlus: true },
-];
 
 
 
