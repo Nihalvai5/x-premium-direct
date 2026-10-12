@@ -4,11 +4,10 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { DisabledPlanCard } from "@/components/DisabledPlanCard";
 import { GiftEligibilityChecker } from "@/components/GiftEligibilityChecker";
 import { ScrollProgressBar, AmbientBackground } from "@/components/PageFX";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Check, CheckCircle, Clock, Crown, DollarSign, ExternalLink, Globe, HelpCircle, Lock, Megaphone, Menu, MessageCircle, MessageSquare, Pen, Play, Send, Shield, Sparkles, Star, ThumbsUp, Users, Wallet, X, Zap } from "lucide-react";
+import { Check, CheckCircle, Clock, Crown, DollarSign, ExternalLink, Globe, HelpCircle, Menu, MessageCircle, MessageSquare, Pen, Play, Send, Shield, Sparkles, Star, ThumbsUp, Users, Wallet, X, Zap } from "lucide-react";
 import { motion, useScroll, useTransform, MotionConfig } from "framer-motion";
 const IS_TOUCH = typeof window !== "undefined" && typeof window.matchMedia === "function" && window.matchMedia("(hover: none), (pointer: coarse)").matches;
 import binanceLogo from "@/assets/binance.png";
@@ -22,12 +21,6 @@ import proofCaptions from "@/assets/delivery-proof.en.vtt?url";
 
 const TELEGRAM_LINK = "https://t.me/Nihalvai332?text=1️⃣%20My%20X%20profile%20link:%0A2️⃣%20Months:%206%20Months%0A3️⃣%20Payment:%20Wallet";
 
-const disabledPlans = [
-  { title: "12 Months", isPlus: false },
-  { title: "3 Months Plus", isPlus: true },
-  { title: "6 Months Plus", isPlus: true },
-  { title: "12 Months Plus", isPlus: true },
-];
 
 
 
@@ -505,50 +498,6 @@ const Index = () => {
 
           </motion.div>
 
-          {/* Disabled / offline plans */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="max-w-6xl mx-auto mt-12">
-            <motion.h3 variants={fadeUp} className="text-center text-lg font-semibold text-muted-foreground mb-6">
-              Currently unavailable — hover for details
-            </motion.h3>
-            <motion.div
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-              variants={pricingStagger}>
-              {disabledPlans.map((plan) => (
-                <motion.div key={plan.title} variants={pricingCard}>
-                  <DisabledPlanCard plan={plan} />
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto mt-8">
-            <motion.div variants={fadeUp} className="p-6 rounded-2xl bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-red-500/10 border border-amber-500/30 bg-card/60">
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full bg-amber-500/20 text-amber-400 shrink-0">
-                  <Megaphone className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold font-display text-foreground mb-2">Premium+ Temporarily Offline</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    📢 Note: Premium+ is temporarily Off! Make sure to join and PIN our channel so you get notified the exact moment Premium+ is back online!{" "}
-                    <a href="https://t.me/Discount_Store0" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">
-                      https://t.me/Discount_Store0
-                    </a>
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
 
           <motion.p
             initial={{ opacity: 0 }}
