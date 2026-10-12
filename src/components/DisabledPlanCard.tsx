@@ -6,8 +6,6 @@ import { Lock, Send } from "lucide-react";
 
 export type DisabledPlan = {
   title: string;
-  original: string;
-  price: string;
   isPlus: boolean;
 };
 
@@ -47,13 +45,8 @@ export function DisabledPlanCard({ plan }: { plan: DisabledPlan }) {
             </Badge>
           </div>
           <Card className="relative border-border/30 bg-card/60 opacity-50 cursor-not-allowed h-full">
-            <CardHeader className="text-center pb-2 pt-6">
+            <CardHeader className="text-center pb-4 pt-7">
               <CardTitle className="text-lg font-display text-muted-foreground">{plan.title}</CardTitle>
-              <div className="mt-4 flex items-baseline justify-center gap-2">
-                <span className="text-base text-muted-foreground line-through">{plan.original}</span>
-                <span className="text-3xl font-bold font-display text-muted-foreground">{plan.price}</span>
-                <span className="text-xs text-muted-foreground">USDT</span>
-              </div>
             </CardHeader>
             <CardContent className="pt-2 pb-6">
               <div className="w-full inline-flex items-center justify-center rounded-full bg-muted/40 text-muted-foreground text-sm font-medium h-10 px-4 opacity-70">

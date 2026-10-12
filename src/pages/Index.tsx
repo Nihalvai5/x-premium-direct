@@ -23,10 +23,10 @@ import proofCaptions from "@/assets/delivery-proof.en.vtt?url";
 const TELEGRAM_LINK = "https://t.me/Nihalvai332?text=1️⃣%20My%20X%20profile%20link:%0A2️⃣%20Months:%206%20Months%0A3️⃣%20Payment:%20Wallet";
 
 const disabledPlans = [
-  { title: "12 Months", original: "$80", price: "$14", isPlus: false },
-  { title: "3 Months Plus", original: "$151", price: "$9", isPlus: true },
-  { title: "6 Months Plus", original: "$302", price: "$15", isPlus: true },
-  { title: "12 Months Plus", original: "$407", price: "$20", isPlus: true },
+  { title: "12 Months", isPlus: false },
+  { title: "3 Months Plus", isPlus: true },
+  { title: "6 Months Plus", isPlus: true },
+  { title: "12 Months Plus", isPlus: true },
 ];
 
 

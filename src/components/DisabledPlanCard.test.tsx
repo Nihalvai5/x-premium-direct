@@ -26,8 +26,8 @@ beforeAll(() => {
     }) as MediaQueryList;
 });
 
-const plusPlan = { title: "6 Months Plus", original: "$302", price: "$15", isPlus: true };
-const regularPlan = { title: "12 Months", original: "$80", price: "$14", isPlus: false };
+const plusPlan = { title: "6 Months Plus", isPlus: true };
+const regularPlan = { title: "12 Months", isPlus: false };
 
 async function expectPopoverVisible(matcher: RegExp | string) {
   await waitFor(() => {
@@ -96,8 +96,7 @@ describe("DisabledPlanCard popover", () => {
       name: /6 Months Plus.*Premium\+ is temporarily offline.*Tap for details/i,
     });
     expect(trigger).toBeInTheDocument();
-    // Card still shows the price info regardless of popover state
-    expect(within(trigger).getByText("$15")).toBeInTheDocument();
-    expect(within(trigger).getByText("$302")).toBeInTheDocument();
+    // Card still shows the plan name regardless of popover state
+    expect(within(trigger).getByText("6 Months Plus")).toBeInTheDocument();
   });
 });
